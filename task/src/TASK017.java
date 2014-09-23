@@ -15,10 +15,7 @@ public class TASK017 {
         if (n <= 0)
             System.out.println("! n>=1");
         else {
-            {
-                if (n == 1)
-                    System.out.println("0.5");
-                else
+
                     for (int i = 2; i <= n; i++) {
                         fact1 = fact1 * (i - 1);
                         fact2 = fact2 * 2 * i;
@@ -32,4 +29,3 @@ public class TASK017 {
 
         }
     }
-}
