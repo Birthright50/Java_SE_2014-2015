@@ -10,8 +10,9 @@ public class TASK030 {
         int n = sc.nextInt();
         System.out.println("Ввод элементов массива");
         int[] a = new int[n];
-        int l = 0;
-        int p = 0;
+        int l;
+        int chet = 0;
+        int nechet = 0;
         boolean q = true;
         for (int i = 0; i < n; i++) {
             a[i] = sc.nextInt();
@@ -29,12 +30,15 @@ public class TASK030 {
                         h++;
                     }
                 }
-                if (j == g | j == h) {
-                    p++;
+                if (j == g ) {
+                    chet++;
+                }
+                if (j == h) {
+                    nechet++;
                 }
             }
         }
-        if (p < 2) {
+        if ((chet < 2 && chet > 2) | (nechet <2 && nechet >2)) {
             q = false;
         }
         System.out.println(q);
