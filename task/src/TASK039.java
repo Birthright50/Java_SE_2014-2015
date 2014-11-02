@@ -925,106 +925,30 @@ public class TASK039 {
 
                             } else {
                                 if (b[i] > 0) {
-                                    int r = 0;
-                                    r = q % 10;
-                                    //по строкам
                                     for (int j = 0; j < n; j++) {
-                                        for (int lk = 0; lk < m && lk < m; lk++) {
-                                            if (a[j][lk] == r) {
+                                        for (int lk = 0; lk < m; lk++) {
+                                            if (a[j][lk] == b[i]) {
                                                 System.out.println(b[i] + ": " + (j + ":" + lk));
                                                 lal = true;
                                             }
-
-                                        }
-                                    }
-                                    //по столбцам
-                                    for (int j = 0; j < m; j++) {
-                                        for (int lk = 0; lk < n && lk < m; lk++) {
-                                            if (a[lk][j] == r) {
-
-                                                System.out.println(b[i] + ": " + lk + ":" + (j));
-                                                lal = true;
-
-                                            }
-
-
-                                        }
-                                    }
-
-
-                                    //по диагонали слева(строки)
-                                    for (int j = 0; j < n; j++) {
-                                        int ram = j;
-                                        for (int lk = 0; ram < n && lk < m && lk < m; lk++, ram++) {
-                                            if (a[ram][lk] == r) {
-
-
-                                                System.out.println(b[i] + ": " + (ram) + ":" + (lk));
-                                                lal = true;
-                                            }
-
-                                        }
-                                    }
-
-                                    //по диагонали слева(столбцы)
-                                    for (int j = 0; j < n; j++) {
-                                        int ram = j;
-                                        for (int lk = 1; ram < n && lk < m && lk < m; lk++, ram++) {
-                                            if (a[ram][lk] == r) {
-
-
-                                                System.out.println(b[i] + ": " + (ram) + ":" + (lk));
-                                                lal = true;
-
-                                            }
                                         }
 
-                                    }
-
-
-                                    //по диагонали справа(строки)
-                                    for (int j = 0; j < n; j++) {
-                                        int ram = j;
-                                        for (int lk = m - 1; ram < n && lk >= 0; lk--, ram++) {
-                                            if (a[ram][lk] == r) {
-
-
-                                                System.out.println(b[i] + ": " + (ram) + ":" + (lk));
-                                                lal = true;
-                                            }
-
-                                        }
-                                    }
-
-                                    //по диагонали справа(столбцы)
-                                    for (int j = m - 2; j >= 0; j--) {
-                                        int ram = j;
-                                        for (int lk = 0; ram >= 0 && lk < n; lk++, ram--) {
-                                            if (a[lk][ram] == r) {
-
-                                                System.out.println(b[i] + ": " + lk + ":" + (ram));
-                                                lal = true;
-                                            }
-
-                                        }
                                     }
                                 }
-
                             }
-
+                        }
+                        if (!lal) {
+                            System.out.println(b[i] + ": нет");
                         }
                     }
+
+
                 }
-            }
-            if(!lal){
-                System.out.println(b[i]+": нет");
+
+
             }
         }
-
-
     }
-
-
 }
 
 
