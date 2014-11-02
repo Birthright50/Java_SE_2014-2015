@@ -7,19 +7,23 @@ public class TASK018 {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Ввод х");
-        double x = sc.nextDouble();
-        System.out.println("Ввод n");
+        Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        double x = sc.nextDouble();
+        double l = x;
         double sum = 0;
-        System.out.println("Ввод a (Кол-во a=n+1)");
-        double a[] = new double[n + 1];
-        for (int i = 0; i <= n; i++) {
-            a[i] = sc.nextDouble();
-            sum = sum + a[i] * Math.pow(x, i);
+        for (int i = 1; i < n; i++) {
+            x = x * l;
+        }
+        System.out.println(x);
+        for (int i = n; i >= 0; i--) {
+            double a = sc.nextDouble();
+            sum = sum + a * x;
+            x = x / l;
+            if (x < 1) {
+                x = 1;
+            }
         }
         System.out.println(sum);
-
     }
-
 }
