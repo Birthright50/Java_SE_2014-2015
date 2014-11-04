@@ -11,17 +11,9 @@ public class TASK010 {
     public static void main(String[] args) {
         System.out.println("Ввод х");
         double x = sc.nextDouble();
-        double y = 0;
-        if (x > 2) {
-            y = (x * x - 1) / (x + 2);
-        }
-        if (x > 0 && x <= 2) {
-            y = (x * x - 1) * (x + 2);
-        }
-        if (x <= 0) {
-            y = x * x * (1 + 2 * x);
-        }
+        double y = (x > 2) ? (x * x - 1) / (x + 2) : (x > 0) ? (x * x - 1) * (x + 2) : x * x * (1 + x * 2);
         System.out.println(y);
+
     }
 }
 
