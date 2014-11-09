@@ -4,7 +4,6 @@ import java.util.Scanner;
  * Created by BirthrightL on 23.09.2014.
  */
 public class TASK018 {
-    static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -12,17 +11,14 @@ public class TASK018 {
         double x = sc.nextDouble();
         double l = x;
         double sum = 0;
-        for (int i = 1; i < n; i++) {
+        while (n > 1) {
             x = x * l;
+            n--;
         }
-        System.out.println(x);
-        for (int i = n; i >= 0; i--) {
+        while (x != 1 / l) {
             double a = sc.nextDouble();
             sum = sum + a * x;
             x = x / l;
-            if (x < 1) {
-                x = 1;
-            }
         }
         System.out.println(sum);
     }
