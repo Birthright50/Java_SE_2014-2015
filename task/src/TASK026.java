@@ -12,16 +12,16 @@ public class TASK026 {
         double x = sc.nextDouble();
         double numerator = x - 1;
         double denominator = 12;
-        double s = 0;
+        double s = numerator / denominator;
         double z = 1;
         if (x == 1)
             System.out.println(s);
         else {
             for (int i = 2; Math.abs(z) > EPS; i++) {
-                s = s + numerator / denominator;
                 numerator *= (x - 1);
                 denominator = denominator * (3 * i) * (i * i + 3) / ((i - 1) * (i - 1) + 3);
                 z = numerator / denominator;
+                s = s + z;
             }
             System.out.println(s);
         }
