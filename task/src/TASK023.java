@@ -8,7 +8,7 @@ public class TASK023 {
         final double EPS = 1e-9;
         double numerator;
         double denominator;
-        double s = 5.0/6;
+        double s = 5.0 / 6;
         System.out.println(s);
         double z = 1;
         for (int i = 2; z > EPS; i++) {
@@ -16,7 +16,6 @@ public class TASK023 {
             denominator = 5 * i * i * i * i + 1;
             z = numerator / denominator;
             s = s + z;
-            System.out.println(i);
         }
         System.out.println(s);
     }
