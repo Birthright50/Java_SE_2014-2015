@@ -15,7 +15,7 @@ public class TASK026 {
         double s = numerator / denominator;
         double z = 1;
         if (x == 1)
-            System.out.println(s);
+            System.out.println(0);
         else {
             for (int i = 2; Math.abs(z) > EPS; i++) {
                 numerator *= (x - 1);
