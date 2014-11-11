@@ -19,10 +19,9 @@ public class TASK026 {
         else {
             for (int i = 2; Math.abs(z) > EPS; i++) {
                 s = s + numerator / denominator;
+                numerator *= (x - 1);
+                denominator = denominator * (3 * i) * (i * i + 3) / ((i - 1) * (i - 1) + 3);
                 z = numerator / denominator;
-                numerator = numerator * (x - 1);
-                denominator = denominator * 3 * (i * i + 3) * 2 / ((i - 1) * (i - 1) + 3);
-
             }
             System.out.println(s);
         }
