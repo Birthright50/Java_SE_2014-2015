@@ -7,17 +7,14 @@ public class TASK025 {
     public static void main(String[] args) {
         final double EPS = 1e-9;
         double numerator = 1;
-        double denominator = 4;
-        double s = 0;
+        double denominator;
+        double s = 0.25;
         double z = 1;
         for (int i = 2; Math.abs(z) > EPS; i++) {
-            s = s + numerator / denominator;
-            z = numerator / denominator;
+            numerator *= -1;
             denominator = i * i + 3 * i;
-            if (i % 2 == 0)
-                numerator = -1;
-            else
-                numerator = 1;
+            z = numerator / denominator;
+            s = s + z;
         }
         System.out.println(s);
     }
