@@ -58,30 +58,43 @@ public class Matrix2X2 {
     }
 
 
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Matrix2X2 h) {
 
-        Matrix2X2 matrix2X2 = (Matrix2X2) o;
-
-        if (Double.compare(matrix2X2.a1, a1) != 0) return false;
-        if (Double.compare(matrix2X2.a2, a2) != 0) return false;
-        if (Double.compare(matrix2X2.a3, a3) != 0) return false;
-        if (Double.compare(matrix2X2.a4, a4) != 0) return false;
-
+       if(this.a1!=h.getA1()){
+           return false;
+       }
+        else{
+           if(this.a2!=h.getA2()){
+               return false;
+           }
+           else{
+               if(this.a3!=h.getA3()){
+                   return false;
+               }
+               else {
+                   if(this.a4!=h.getA4()){
+                       return false;
+                   }
+               }
+           }
+       }
         return true;
     }
 
        public String toString() {
         String g = a1 + " " + a2+"\n"+a3+" "+a4;
         return g;
+    }
+    public Matrix2X2 mult(Matrix2X2 h){
+        return new Matrix2X2(this.a1*h.getA1()+this.a2*h.getA2(), this.a1*h.getA2()+this.a2*h.getA4(), this.a3*h.getA1()+this.a4*h.getA3(), this.a3*h.getA2()+this.a4*h.getA4());
+    }
+    public Matrix2X2 add(Matrix2X2 h){
+        return new Matrix2X2(this.a1+h.getA1(),this.a2+h.getA2(),this.a3+h.getA3(),this.a4+h.getA4());
+    }
+    public double det(Matrix2X2 h){
+        double det = h.getA1()*h.getA4()-h.getA3()*h.getA2();
+        return det; 
+    }
 
-    }
-    public void add(Matrix2X2 h){
-        this.a1=this.a1+h.getA1();
-        this.a2=this.a2+h.getA2();
-        this.a3=this.a3+h.getA3();
-        this.a4=this.a4+h.getA4();
-    }
 }
 
