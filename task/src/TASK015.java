@@ -5,19 +5,16 @@
 import java.util.Scanner;
 
 public class TASK015 {
-    static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         double x = sc.nextDouble();
-        double s = 0;
-        if (n != 1) {
-            s = x;
+        double s = n + x;
+        for (int i = n - 1; i >= 1; i--) {
+            s = 1 / s;
+            s = i + x * s;
         }
-        for (int i = n; i >= 2; i--) {
-            s = x / (i + s);
-        }
-        s++;
         System.out.println(s);
     }
 
