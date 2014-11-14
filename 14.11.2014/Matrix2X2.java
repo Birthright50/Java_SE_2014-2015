@@ -7,7 +7,6 @@ public class Matrix2X2 {
     private double a3;
     private double a4;
 
-
     public Matrix2X2(double a1, double a2, double a3, double a4) {
         this.a1 = a1;
         this.a2 = a2;
@@ -18,11 +17,9 @@ public class Matrix2X2 {
     public Matrix2X2() {
         this(0, 0, 0, 0);
     }
-    public Matrix2X2(double x){
-        this.a1 = x;
-        this.a2 = x;
-        this.a3 = x;
-        this.a4 = x;
+
+    public Matrix2X2(double x) {
+        this(x, x, x, x);
     }
 
     public double getA1() {
@@ -57,44 +54,36 @@ public class Matrix2X2 {
         this.a3 = a3;
     }
 
-
     public boolean equals(Matrix2X2 h) {
-
-       if(this.a1!=h.getA1()){
-           return false;
-       }
-        else{
-           if(this.a2!=h.getA2()){
-               return false;
-           }
-           else{
-               if(this.a3!=h.getA3()){
-                   return false;
-               }
-               else {
-                   if(this.a4!=h.getA4()){
-                       return false;
-                   }
-               }
-           }
-       }
+        if (this.a1 != h.getA1()) {
+            return false;
+        }
+        if (this.a2 != h.getA2()) {
+            return false;
+        }
+        if (this.a3 != h.getA3()) {
+            return false;
+        }
+        if (this.a4 != h.getA4()) {
+            return false;
+        }
         return true;
     }
 
-       public String toString() {
-        String g = a1 + " " + a2+"\n"+a3+" "+a4;
+        public String toString(){
+        String g=a1+" "+a2+"\n"+a3+" "+a4;
         return g;
-    }
-    public Matrix2X2 mult(Matrix2X2 h){
-        return new Matrix2X2(this.a1*h.getA1()+this.a2*h.getA2(), this.a1*h.getA2()+this.a2*h.getA4(), this.a3*h.getA1()+this.a4*h.getA3(), this.a3*h.getA2()+this.a4*h.getA4());
-    }
-    public Matrix2X2 add(Matrix2X2 h){
+        }
+public Matrix2X2 mult(Matrix2X2 h){
+        return new Matrix2X2(this.a1*h.getA1()+this.a2*h.getA3(),this.a1*h.getA2()+this.a2*h.getA4(),this.a3*h.getA1()+this.a4*h.getA3(),this.a3*h.getA2()+this.a4*h.getA4());
+        }
+public Matrix2X2 add(Matrix2X2 h){
         return new Matrix2X2(this.a1+h.getA1(),this.a2+h.getA2(),this.a3+h.getA3(),this.a4+h.getA4());
-    }
-    public double det(Matrix2X2 h){
-        double det = h.getA1()*h.getA4()-h.getA3()*h.getA2();
-        return det; 
-    }
+        }
+public double det(){
+        double det=this.a1*this.a4-this.a2*this.a3;
+        return det;
+        }
 
-}
+        }
 
