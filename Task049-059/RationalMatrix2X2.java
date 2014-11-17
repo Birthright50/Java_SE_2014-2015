@@ -2,103 +2,55 @@
  * Created by BirthrightL on 16.11.2014.
  */
 public class RationalMatrix2X2 {
-    private int[][] a = new int[2][4];
+    private RationalFraction[][] a = new RationalFraction[2][2];
 
-    public RationalMatrix2X2(RationalFraction v) {
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 4; j += 2) {
-                a[i][j] = v.getA();
-                a[i][j + 1] = v.getB();
-            }
-        }
-    }
 
     public RationalMatrix2X2() {
         this(new RationalFraction());
     }
 
-    public int[][] getA() {
+    public RationalMatrix2X2(RationalFraction v, RationalFraction v1, RationalFraction v2, RationalFraction v3) {
+        this.a[0][0] = v;
+        this.a[0][1] = v1;
+        this.a[1][0] = v2;
+        this.a[1][1] = v3;
+    }
+
+    public RationalMatrix2X2(RationalFraction a) {
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                this.a[i][j] = a;
+            }
+        }
+    }
+
+    public RationalFraction[][] getA() {
         return a;
     }
 
-    public void setA(int[][] a) {
+    public void setA(RationalFraction[][] a) {
         this.a = a;
     }
 
-    public RationalMatrix2X2(RationalFraction v, RationalFraction v1, RationalFraction v2, RationalFraction v3) {
-        this.a[0][0] = v.getA();
-        this.a[0][1] = v.getB();
-        this.a[0][2] = v1.getA();
-        this.a[0][3] = v1.getB();
-        this.a[1][0] = v2.getA();
-        this.a[1][1] = v2.getB();
-        this.a[1][2] = v3.getA();
-        this.a[1][3] = v3.getB();
-    }
-
     public RationalMatrix2X2 add(RationalMatrix2X2 v) {
-        RationalFraction l = new RationalFraction(this.a[0][0], this.a[0][1]);
-        RationalFraction l1 = new RationalFraction(v.a[0][0], v.a[0][1]);
-        l.add2(l1);
-        l1.setA(this.a[0][2]);
-        l1.setB(this.a[0][3]);
-        RationalFraction l2 = new RationalFraction(v.a[0][2], v.a[0][3]);
-        l1.add2(l2);
-        l2.setA(this.a[1][0]);
-        l2.setB(this.a[1][1]);
-        RationalFraction l3 = new RationalFraction(v.a[1][0], v.a[1][1]);
-        l2.add2(l3);
-        l3.setA(this.a[1][2]);
-        l3.setB(this.a[1][3]);
-        RationalFraction l4 = new RationalFraction(v.a[1][2], v.a[1][3]);
-        l3.add2(l4);
-        return new RationalMatrix2X2(l, l1, l2, l3);
+        return new RationalMatrix2X2((this.a[0][0]).add(v.a[0][0]), this.a[0][1].add(v.a[0][1]), (this.a[1][1]).add(v.a[1][0]), (this.a[1][1]).add(v.a[1][1]));
     }
 
     public RationalMatrix2X2 mult(RationalMatrix2X2 v) {
-        RationalFraction l = new RationalFraction(this.a[0][0], this.a[0][1]);
-        RationalFraction l1 = new RationalFraction(v.a[0][0], v.a[0][1]);
-        RationalFraction l2 = new RationalFraction(this.a[0][2], this.a[0][3]);
-        RationalFraction l3 = new RationalFraction(v.a[0][2], v.a[0][3]);
-        RationalFraction l4 = new RationalFraction(this.a[1][0], this.a[1][1]);
-        RationalFraction l5 = new RationalFraction(v.a[1][0], v.a[1][1]);
-        RationalFraction l6 = new RationalFraction(this.a[1][2], this.a[1][3]);
-        RationalFraction l7 = new RationalFraction(v.a[1][2], v.a[1][3]);
-        return new RationalMatrix2X2(l.mult(l1).add(l2.mult(l5)), l.mult(l3).add(l2.mult(l7)), l4.mult(l1).add(l6.mult(l5)), l4.mult(l3).add(l6.mult(l7)));
+        return new RationalMatrix2X2((this.a[0][0].mult(v.a[0][0]).add(this.a[0][1].mult(v.a[1][0]))), (this.a[0][0].mult(v.a[0][1]).add(this.a[0][1].mult(v.a[1][1]))), (this.a[1][0].mult(v.a[0][0]).add(this.a[1][1].mult(v.a[1][0]))), (this.a[1][0].mult(v.a[0][1]).add(this.a[1][1].mult(v.a[1][1]))));
     }
 
     public RationalFraction det() {
-        RationalFraction l = new RationalFraction(this.a[0][0], this.a[0][1]);
-        RationalFraction l1 = new RationalFraction(this.a[0][2], this.a[0][3]);
-        RationalFraction l2 = new RationalFraction(this.a[1][0], this.a[1][1]);
-        RationalFraction l3 = new RationalFraction(this.a[1][2], this.a[1][3]);
-        l.mult2(l3);
-        l1.mult2(l2);
-        if (l.equals(l1)) {
-            return new RationalFraction();
-        }
-        l.sub2(l1);
-        return new RationalFraction(l.getA(), l.getB());
+        RationalFraction x = (this.a[0][0].mult(this.a[1][1])).sub(this.a[1][0].mult(this.a[0][1]));
+        return new RationalFraction(x.getA(), x.getB());
     }
 
     public RationalVector2D multVector(RationalVector2D v) {
-
-        RationalFraction l = new RationalFraction(this.a[0][0] * v.getX(), this.a[0][1] * v.getX1());
-        RationalFraction l1 = new RationalFraction(this.a[0][2] * v.getY(), this.a[0][3] * v.getY1());
-        l.add2(l1);
-        l1.setA(this.a[1][0] * v.getX());
-        l1.setB(this.a[1][1] * v.getX1());
-        RationalFraction l2 = new RationalFraction(this.a[1][2] * v.getY(), this.a[1][3] * v.getY1());
-        l1.add2(l2);
-        return new RationalVector2D(new RationalFraction(l.getA(), l.getB()), new RationalFraction(l1.getA(), l1.getB()));
+        return new RationalVector2D((this.a[0][0].mult(v.getX()).add(this.a[0][1].mult(v.getY()))), (this.a[1][0].mult(v.getX()).add(this.a[1][1].mult(v.getY()))));
     }
 
     public String toString() {
-        RationalFraction l = new RationalFraction(this.a[0][0], this.a[0][1]);
-        RationalFraction l1 = new RationalFraction(this.a[0][2], this.a[0][3]);
-        RationalFraction l2 = new RationalFraction(this.a[1][0], this.a[1][1]);
-        RationalFraction l3 = new RationalFraction(this.a[1][2], this.a[1][3]);
-        return l.toString() + " " + l1.toString() + "\n" + l2.toString() + " " + l3.toString();
+        return this.a[0][0].toString() + " " + this.a[0][1].toString() + "\n" + this.a[1][0].toString() + " " + this.a[1][1].toString();
     }
 
     public static void main(String[] args) {

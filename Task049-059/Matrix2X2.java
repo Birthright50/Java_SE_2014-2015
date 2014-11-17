@@ -130,6 +130,9 @@ public class Matrix2X2 {
     }
 
     public double det() {
+        if ((this.a[0][0] * this.a[1][1]) == (this.a[1][0] * this.a[0][1])) {
+            return 0.0;
+        }
         return this.a[0][0] * this.a[1][1] - this.a[1][0] * this.a[0][1];
     }
 
@@ -171,7 +174,7 @@ public class Matrix2X2 {
         System.out.println(x);//0 0 0 0
         Matrix2X2 x1 = new Matrix2X2(5);
         System.out.println(x1);// 5 5 5 5
-        Matrix2X2 x2 = new Matrix2X2(1,2,3,4);
+        Matrix2X2 x2 = new Matrix2X2(1, 2, 3, 4);
         System.out.println(x2);//1,2,3,4
         System.out.println(x2.add(x1));//6,7,8,9
         System.out.println(x2.sub(x1));//-4, -3, -2, -1

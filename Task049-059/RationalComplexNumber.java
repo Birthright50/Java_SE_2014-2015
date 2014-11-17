@@ -2,49 +2,12 @@
  * Created by BirthrightL on 16.11.2014.
  */
 public class RationalComplexNumber {
-    private int a;
-    private int a1;
-    private int b;
-    private int b1;
-
-    public int getA() {
-        return a;
-    }
-
-    public void setA(int a) {
-        this.a = a;
-    }
-
-    public int getB() {
-        return b;
-    }
-
-    public void setB(int b) {
-        this.b = b;
-    }
-
-    public int getA1() {
-        return a1;
-    }
-
-    public void setA1(int a1) {
-        this.a1 = a1;
-    }
-
-    public int getB1() {
-        return b1;
-    }
-
-    public void setB1(int b1) {
-        this.b1 = b1;
-    }
+    private RationalFraction x;
+    private RationalFraction y;
 
     public RationalComplexNumber(RationalFraction x, RationalFraction y) {
-        this.a = x.getA();
-        this.a1 = x.getB();
-
-        this.b = y.getA();
-        this.b1 = y.getB();
+        this.x = x;
+        this.y = y;
     }
 
     public RationalComplexNumber() {
@@ -52,47 +15,35 @@ public class RationalComplexNumber {
     }
 
     public String toString() {
-        if (this.b1 >= 0 & this.a1 >= 0 & this.b < 0)
-            return this.a + "/" + this.a1 + " - " + -this.b + "/" + this.b1 + " * i";
-        if (this.b1 >= 0 & this.a1 >= 0 & this.b >= 0)
-            return this.a + "/" + this.a1 + " + " + this.b + "/" + this.b1 + " * i";
-        if (this.b1 >= 0 & this.a1 < 0 & this.b >= 0)
-            return -this.a + "/" + (-this.a1) + " + " + this.b + "/" + this.b1 + " * i";
-        if (this.b1 >= 0 & this.a1 < 0 & this.b < 0)
-            return -this.a + "/" + (-this.a1) + "  " + this.b + "/" + this.b1 + " * i";
-        if (this.b1 < 0 & this.a1 >= 0 & this.b >= 0)
-            return this.a + "/" + this.a1 + " - " + this.b + "/" + (-this.b1) + " * i";
-        if (this.b1 < 0 & this.a1 >= 0 & this.b < 0)
-            return this.a + "/" + this.a1 + " + " + -this.b + "/" + (-this.b1) + " * i";
-        if (this.b1 < 0 & this.a1 < 0 & this.b >= 0)
-            return -this.a + "/" + -this.a1 + " - " + this.b + "/" + (-this.b1) + " * i";
-        if (this.b1 < 0 & this.a1 < 0 & this.b < 0)
-            return -this.a + "/" + (-this.a1) + " + " + -this.b + "/" + (-this.b1) + " * i";
-        return null;
+        return (this.x + " + " + this.y + " * i");
+    }
+
+    public RationalFraction getX() {
+        return x;
+    }
+
+    public void setX(RationalFraction x) {
+        this.x = x;
+    }
+
+    public RationalFraction getY() {
+        return y;
+    }
+
+    public void setY(RationalFraction y) {
+        this.y = y;
     }
 
     public RationalComplexNumber add(RationalComplexNumber v) {
-        RationalFraction y = new RationalFraction(this.a, this.a1);
-        RationalFraction y1 = new RationalFraction(this.b, this.b1);
-        RationalFraction y2 = new RationalFraction(v.getA(), v.getA1());
-        RationalFraction y3 = new RationalFraction(v.getB(), v.getB1());
-        return new RationalComplexNumber(y.add(y2), y1.add(y3));
+        return new RationalComplexNumber(this.x.add(v.getX()), this.y.add(v.getY()));
     }
 
     public RationalComplexNumber sub(RationalComplexNumber v) {
-        RationalFraction y = new RationalFraction(this.a, this.a1);
-        RationalFraction y1 = new RationalFraction(this.b, this.b1);
-        RationalFraction y2 = new RationalFraction(v.getA(), v.getA1());
-        RationalFraction y3 = new RationalFraction(v.getB(), v.getB1());
-        return new RationalComplexNumber(y.sub(y2), y1.sub(y3));
+        return new RationalComplexNumber(this.x.sub(v.getX()), this.y.sub(v.getY()));
     }
 
     public RationalComplexNumber mult(RationalComplexNumber v) {
-        RationalFraction y = new RationalFraction(this.a, this.a1);
-        RationalFraction y1 = new RationalFraction(this.b, this.b1);
-        RationalFraction y2 = new RationalFraction(v.getA(), v.getA1());
-        RationalFraction y3 = new RationalFraction(v.getB(), v.getB1());
-        return new RationalComplexNumber(y.mult(y2).sub(y1.mult(y3)), y.mult(y3).add(y1.mult(y2)));
+        return new RationalComplexNumber((this.x.mult(v.x)).sub(this.y.mult(v.y)), (this.y.mult(v.x)).add(this.x.mult(v.y)));
     }
 
     public static void main(String[] args) {
@@ -112,14 +63,13 @@ public class RationalComplexNumber {
     }
 
     public boolean equals(RationalComplexNumber v) {
-        RationalFraction x = new RationalFraction(this.a, this.a1);
-        RationalFraction x1 = new RationalFraction(this.b, this.b1);
-        RationalFraction x2 = new RationalFraction(v.a, v.a1);
-        RationalFraction x3 = new RationalFraction(v.b, v.b1);
-        if (x.equals(x2) && x1.equals(x3)) {
-            return true;
+        if (this.x != v.x) {
+            return false;
         }
-        return false;
+        if (this.y != v.y) {
+            return false;
+        }
+        return true;
 
     }
 }

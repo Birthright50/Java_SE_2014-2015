@@ -2,220 +2,58 @@
  * Created by BirthrightL on 16.11.2014.
  */
 public class RationalComplexMatrix2X2 {
-    private int[][] a = new int[2][8];
+    private RationalComplexNumber[][] a = new RationalComplexNumber[2][2];
 
     public RationalComplexMatrix2X2(RationalComplexNumber x) {
         for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 8; j += 4) {
-                a[i][j] = x.getA();
-                a[i][j + 1] = x.getA1();
-                a[i][j + 2] = x.getB();
-                a[i][j + 3] = x.getB1();
+            for (int j = 0; j < 2; j++) {
+                this.a[i][j] = x;
             }
         }
     }
+
 
     public RationalComplexMatrix2X2() {
         this(new RationalComplexNumber());
     }
 
     public RationalComplexMatrix2X2(RationalComplexNumber x, RationalComplexNumber x1, RationalComplexNumber x2, RationalComplexNumber x3) {
-        this.a[0][0] = x.getA();
-        this.a[0][1] = x.getA1();
-        this.a[0][2] = x.getB();
-        this.a[0][3] = x.getB1();
-        this.a[0][4] = x1.getA();
-        this.a[0][5] = x1.getA1();
-        this.a[0][6] = x1.getB();
-        this.a[0][7] = x1.getB1();
-        this.a[1][0] = x2.getA();
-        this.a[1][1] = x2.getA1();
-        this.a[1][2] = x2.getB();
-        this.a[1][3] = x2.getB1();
-        this.a[1][4] = x3.getA();
-        this.a[1][5] = x3.getA1();
-        this.a[1][6] = x3.getB();
-        this.a[1][7] = x3.getB1();
+        this.a[0][0] = x;
+        this.a[0][1] = x1;
+        this.a[1][0] = x2;
+        this.a[1][1] = x3;
     }
 
-    public int[][] getA() {
+    public RationalComplexNumber[][] getA() {
         return a;
     }
 
-    public void setA(int[][] a) {
+    public void setA(RationalComplexNumber[][] a) {
         this.a = a;
     }
 
     public RationalComplexMatrix2X2 add(RationalComplexMatrix2X2 v) {
-        RationalFraction x = new RationalFraction(this.a[0][0], this.a[0][1]);
-        RationalFraction x2 = new RationalFraction(this.a[0][2], this.a[0][3]);
-        RationalFraction x9 = new RationalFraction(v.a[0][0], v.a[0][1]);
-        RationalFraction x10 = new RationalFraction(v.a[0][2], v.a[0][3]);
-        RationalComplexNumber y = new RationalComplexNumber(x, x2);
-        RationalComplexNumber y1 = new RationalComplexNumber(x9, x10);
-
-
-        x.setA(this.a[0][4]);
-        x.setB(this.a[0][5]);
-        x2.setA(this.a[0][6]);
-        x2.setB(this.a[0][7]);
-        x9.setA(v.a[0][4]);
-        x9.setB(v.a[0][5]);
-        x10.setA(v.a[0][6]);
-        x10.setB(v.a[0][7]);
-        RationalComplexNumber y2 = new RationalComplexNumber(x, x2);
-        RationalComplexNumber y3 = new RationalComplexNumber(x9, x10);
-
-        x.setA(this.a[1][0]);
-        x.setB(this.a[1][1]);
-        x2.setA(this.a[1][2]);
-        x2.setB(this.a[1][3]);
-        x9.setA(v.a[1][0]);
-        x9.setB(v.a[1][1]);
-        x10.setA(v.a[1][2]);
-        x10.setB(v.a[1][3]);
-        RationalComplexNumber y4 = new RationalComplexNumber(x, x2);
-        RationalComplexNumber y5 = new RationalComplexNumber(x9, x10);
-
-        x.setA(this.a[1][4]);
-        x.setB(this.a[1][5]);
-        x2.setA(this.a[1][6]);
-        x2.setB(this.a[1][7]);
-        x9.setA(v.a[1][4]);
-        x9.setB(v.a[1][5]);
-        x10.setA(v.a[1][6]);
-        x10.setB(v.a[1][7]);
-        RationalComplexNumber y6 = new RationalComplexNumber(x, x2);
-        RationalComplexNumber y7 = new RationalComplexNumber(x9, x10);
-
-        return new RationalComplexMatrix2X2(y.add(y1), y2.add(y3), y4.add(y5), y6.add(y7));
+        return new RationalComplexMatrix2X2((this.a[0][0]).add(v.a[0][0]), this.a[0][1].add(v.a[0][1]), (this.a[1][1]).add(v.a[1][0]), (this.a[1][1]).add(v.a[1][1]));
     }
 
     public RationalComplexMatrix2X2 mult(RationalComplexMatrix2X2 v) {
-        RationalFraction y1 = new RationalFraction(this.a[0][0], this.a[0][1]);
-        RationalFraction y2 = new RationalFraction(this.a[0][2], this.a[0][3]);
-        RationalComplexNumber v1 = new RationalComplexNumber(y1, y2);
-
-        y1.setA(this.a[0][4]);
-        y1.setB(this.a[0][5]);
-        y2.setA(this.a[0][6]);
-        y2.setB(this.a[0][7]);
-        RationalComplexNumber v2 = new RationalComplexNumber(y1, y2);
-
-        y1.setA(this.a[1][0]);
-        y1.setB(this.a[1][1]);
-        y2.setA(this.a[1][2]);
-        y2.setB(this.a[1][3]);
-        RationalComplexNumber v3 = new RationalComplexNumber(y1, y2);
-
-        y1.setA(this.a[1][4]);
-        y1.setB(this.a[1][5]);
-        y2.setA(this.a[1][6]);
-        y2.setB(this.a[1][7]);
-        RationalComplexNumber v4 = new RationalComplexNumber(y1, y2);
-
-        y1.setA(v.a[0][0]);
-        y1.setB(v.a[0][1]);
-        y2.setA(v.a[0][2]);
-        y2.setB(v.a[0][3]);
-        RationalComplexNumber v5 = new RationalComplexNumber(y1, y2);
-
-        y1.setA(v.a[0][4]);
-        y1.setB(v.a[0][5]);
-        y2.setA(v.a[0][6]);
-        y2.setB(v.a[0][7]);
-        RationalComplexNumber v6 = new RationalComplexNumber(y1, y2);
-
-        y1.setA(v.a[1][0]);
-        y1.setB(v.a[1][1]);
-        y2.setA(v.a[1][2]);
-        y2.setB(v.a[1][3]);
-        RationalComplexNumber v7 = new RationalComplexNumber(y1, y2);
-
-        y1.setA(v.a[1][4]);
-        y1.setB(v.a[1][5]);
-        y2.setA(v.a[1][6]);
-        y2.setB(v.a[1][7]);
-        RationalComplexNumber v8 = new RationalComplexNumber(y1, y2);
-
-        return new RationalComplexMatrix2X2(v1.mult(v5).add(v2.mult(v7)), v1.mult(v6).add(v2.mult(v8)), v3.mult(v5).add(v4.mult(v7)), v3.mult(v6).add(v4.mult(v8)));
+        return new RationalComplexMatrix2X2((this.a[0][0].mult(v.a[0][0]).add(this.a[0][1].mult(v.a[1][0]))), (this.a[0][0].mult(v.a[0][1]).add(this.a[0][1].mult(v.a[1][1]))), (this.a[1][0].mult(v.a[0][0]).add(this.a[1][1].mult(v.a[1][0]))), (this.a[1][0].mult(v.a[0][1]).add(this.a[1][1].mult(v.a[1][1]))));
     }
 
     public RationalComplexNumber det() {
-        RationalFraction y1 = new RationalFraction(this.a[0][0], this.a[0][1]);
-        RationalFraction y2 = new RationalFraction(this.a[0][2], this.a[0][3]);
-        RationalComplexNumber z1 = new RationalComplexNumber(y1, y2);
-
-        y1.setA(this.a[0][4]);
-        y1.setB(this.a[0][5]);
-        y2.setA(this.a[0][6]);
-        y2.setB(this.a[0][7]);
-        RationalComplexNumber z2 = new RationalComplexNumber(y1, y2);
-
-        y1.setA(this.a[1][0]);
-        y1.setB(this.a[1][1]);
-        y2.setA(this.a[1][2]);
-        y2.setB(this.a[1][3]);
-        RationalComplexNumber z3 = new RationalComplexNumber(y1, y2);
-
-        y1.setA(this.a[1][4]);
-        y1.setB(this.a[1][5]);
-        y2.setA(this.a[1][6]);
-        y2.setB(this.a[1][7]);
-        RationalComplexNumber z4 = new RationalComplexNumber(y1, y2);
-        z1 = z1.mult(z4);
-        z2 = z2.mult(z3);
-        if (z2.equals(z1)) {
+        if((this.a[0][0].mult(this.a[1][1])).equals(this.a[1][0].mult(this.a[0][1]))){
             return new RationalComplexNumber();
         }
-        RationalComplexNumber s = z1.mult(z4).sub(z2.mult(z3));
-        System.out.println(s);
-        y1.setA(s.getA());
-        y1.setB(s.getA1());
-        y2.setA(s.getB());
-        y2.setB(s.getB1());
-        return new RationalComplexNumber(y1, y2);
+        RationalComplexNumber x = (this.a[0][0].mult(this.a[1][1])).sub(this.a[1][0].mult(this.a[0][1]));
+        return new RationalComplexNumber(x.getX(), x.getY());
     }
 
     public RationalComplexVector2D multVector(RationalComplexVector2D v) {
-        RationalFraction y1 = new RationalFraction(this.a[0][0], this.a[0][1]);
-        RationalFraction y2 = new RationalFraction(this.a[0][2], this.a[0][3]);
-        RationalComplexNumber x1 = new RationalComplexNumber(y1, y2);
-        RationalFraction y3 = new RationalFraction(this.a[0][4], this.a[0][5]);
-        RationalFraction y4 = new RationalFraction(this.a[0][6], this.a[0][7]);
-        RationalComplexNumber x2 = new RationalComplexNumber(y3, y4);
-        RationalFraction z1 = new RationalFraction(v.getA(), v.getA1());
-        RationalFraction z2 = new RationalFraction(v.getA2(), v.getA3());
-        RationalComplexNumber x3 = new RationalComplexNumber(z1, z2);
-        RationalFraction z3 = new RationalFraction(v.getA4(), v.getA5());
-        RationalFraction z4 = new RationalFraction(v.getA6(), v.getA7());
-        RationalComplexNumber x4 = new RationalComplexNumber(z3, z4);
-        x1 = x1.mult(x3).add(x2.mult(x4));
-        RationalFraction y5 = new RationalFraction(this.a[1][0], this.a[1][1]);
-        RationalFraction y6 = new RationalFraction(this.a[1][2], this.a[1][3]);
-        RationalComplexNumber x5 = new RationalComplexNumber(y5, y6);
-        RationalFraction y7 = new RationalFraction(this.a[1][4], this.a[1][5]);
-        RationalFraction y8 = new RationalFraction(this.a[1][6], this.a[1][7]);
-        RationalComplexNumber x6 = new RationalComplexNumber(y7, y8);
-        x2 = x5.mult(x3).add(x6.mult(x4));
-        return new RationalComplexVector2D(x1, x2);
+        return new RationalComplexVector2D((this.a[0][0].mult(v.getX()).add(this.a[0][1].mult(v.getY()))), (this.a[1][0].mult(v.getX()).add(this.a[1][1].mult(v.getY()))));
     }
 
     public String toString() {
-        RationalFraction y1 = new RationalFraction(this.a[0][0], this.a[0][1]);
-        RationalFraction y2 = new RationalFraction(this.a[0][2], this.a[0][3]);
-        RationalComplexNumber x1 = new RationalComplexNumber(y1, y2);
-        RationalFraction y3 = new RationalFraction(this.a[0][4], this.a[0][5]);
-        RationalFraction y4 = new RationalFraction(this.a[0][6], this.a[0][7]);
-        RationalComplexNumber x2 = new RationalComplexNumber(y3, y4);
-        RationalFraction y5 = new RationalFraction(this.a[1][0], this.a[1][1]);
-        RationalFraction y6 = new RationalFraction(this.a[1][2], this.a[1][3]);
-        RationalComplexNumber x3 = new RationalComplexNumber(y5, y6);
-        RationalFraction y7 = new RationalFraction(this.a[1][4], this.a[1][5]);
-        RationalFraction y8 = new RationalFraction(this.a[1][6], this.a[1][7]);
-        RationalComplexNumber x4 = new RationalComplexNumber(y7, y8);
-        return x1.toString() + " , " + x2.toString() + "\n" + x3.toString() + " , " + x4.toString();
-
+        return this.a[0][0].toString() + " " + this.a[0][1].toString() + "\n" + this.a[1][0].toString() + " " + this.a[1][1].toString();
     }
 
     public static void main(String[] args) {

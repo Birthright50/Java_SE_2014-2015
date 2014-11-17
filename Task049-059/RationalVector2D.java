@@ -3,105 +3,62 @@
  */
 
 public class RationalVector2D {
-    private int x;
-    private int x1;
-    private int y;
-    private int y1;
+    private RationalFraction x;
+    private RationalFraction y;
 
-    public int getX1() {
-        return x1;
-    }
-
-    public void setX1(int x1) {
-        this.x1 = x1;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
+    public RationalVector2D(RationalFraction x, RationalFraction y) {
         this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
         this.y = y;
     }
 
-    public int getY1() {
-        return y1;
+    public RationalFraction getX() {
+        return x;
     }
 
-    public void setY1(int y1) {
-        this.y1 = y1;
+    public void setX(RationalFraction x) {
+        this.x = x;
     }
 
-    public RationalVector2D(RationalFraction x, RationalFraction y) {
-        this.x = x.getA();
-        this.x1 = x.getB();
-        this.y = y.getA();
-        this.y1 = y.getB();
+    public RationalFraction getY() {
+        return y;
+    }
+
+    public void setY(RationalFraction y) {
+        this.y = y;
     }
 
     public RationalVector2D() {
         this(new RationalFraction(), new RationalFraction());
-
     }
 
     public RationalVector2D add(RationalVector2D v) {
-        RationalFraction l = new RationalFraction(this.x, this.x1);
-        RationalFraction l1 = new RationalFraction(v.getX(), v.getX1());
-        l.add2(l1);
-        l1.setA(this.y);
-        l1.setB(this.y1);
-        RationalFraction l2 = new RationalFraction(v.getY(), v.getY1());
-        l1.add2(l2);
-        return new RationalVector2D(l, l1);
+        return new RationalVector2D(this.x.add(v.getX()), this.y.add(v.getY()));
     }
 
     public String toString() {
-        RationalFraction l = new RationalFraction(this.x, this.x1);
-        RationalFraction l1 = new RationalFraction(this.y, this.y1);
-        String s = "(" + l.toString() + " , " + l1.toString() + ")";
-        return s;
+        return this.x.toString() + " " + this.y.toString();
     }
 
     public double length() {
-        RationalFraction l = new RationalFraction(this.x, this.x1);
-        RationalFraction l1 = new RationalFraction(this.y, this.y1);
-        l.mult2(l);
-        l1.mult2(l1);
-        l.add2(l1);
-        double s = Math.sqrt(l.value());
-        return s;
+        double a = Math.sqrt(((this.x.mult(this.x)).add(this.y.mult(this.y))).value());
+        return a;
     }
 
     public RationalFraction scalarProduct(RationalVector2D v) {
-        RationalFraction s = new RationalFraction(this.x, this.x1);
-        RationalFraction s1 = new RationalFraction(v.getX(), v.getX1());
-        s.mult2(s1);
-        s1.setA(this.y);
-        s1.setB(this.y1);
-        RationalFraction s3 = new RationalFraction(v.getY(), v.getY1());
-        s1.mult2(s3);
-        s.add2(s1);
-        return new RationalFraction(s.getA(), s.getB());
+        RationalFraction x = (this.x.mult(v.getX())).add(this.y.mult(v.getY()));
+        return new RationalFraction(x.getA(), x.getB());
     }
 
     public boolean equals(RationalVector2D v) {
-        RationalFraction l = new RationalFraction(this.x, this.x1);
-        RationalFraction l1 = new RationalFraction(v.getX(), v.getX1());
-        RationalFraction l2 = new RationalFraction(this.y, this.y1);
-        RationalFraction l3 = new RationalFraction(v.getY(), v.getY1());
-        if (l.equals(l1) && l2.equals(l3)) {
-            return true;
+        if (this.x != v.getX()) {
+            return false;
         }
-        return false;
+        if (this.y != v.getY()) {
+            return false;
+        }
+        return true;
     }
+
 
     public static void main(String[] args) {
         RationalVector2D x = new RationalVector2D();
