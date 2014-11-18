@@ -41,6 +41,9 @@ public class RationalMatrix2X2 {
     }
 
     public RationalFraction det() {
+        if((this.a[0][0].mult(this.a[1][1])).equals(this.a[1][0].mult(this.a[0][1]))){
+            return new RationalFraction();
+        }
         RationalFraction x = (this.a[0][0].mult(this.a[1][1])).sub(this.a[1][0].mult(this.a[0][1]));
         return new RationalFraction(x.getA(), x.getB());
     }

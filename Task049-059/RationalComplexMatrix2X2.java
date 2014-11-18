@@ -41,11 +41,11 @@ public class RationalComplexMatrix2X2 {
     }
 
     public RationalComplexNumber det() {
-        if((this.a[0][0].mult(this.a[1][1])).equals(this.a[1][0].mult(this.a[0][1]))){
+        if ((this.a[0][0].mult(this.a[1][1])).equals(this.a[1][0].mult(this.a[0][1]))) {
             return new RationalComplexNumber();
         }
-        RationalComplexNumber x = (this.a[0][0].mult(this.a[1][1])).sub(this.a[1][0].mult(this.a[0][1]));
-        return new RationalComplexNumber(x.getX(), x.getY());
+        RationalComplexNumber v = (this.a[0][0].mult(this.a[1][1])).sub(this.a[1][0].mult(this.a[0][1]));
+        return new RationalComplexNumber(v.getX(), v.getY());
     }
 
     public RationalComplexVector2D multVector(RationalComplexVector2D v) {
@@ -53,7 +53,7 @@ public class RationalComplexMatrix2X2 {
     }
 
     public String toString() {
-        return this.a[0][0].toString() + " " + this.a[0][1].toString() + "\n" + this.a[1][0].toString() + " " + this.a[1][1].toString();
+        return this.a[0][0].toString() + "   " + this.a[0][1].toString() + "\n" + this.a[1][0].toString() + "   " + this.a[1][1].toString();
     }
 
     public static void main(String[] args) {
@@ -85,6 +85,7 @@ public class RationalComplexMatrix2X2 {
         RationalComplexNumber f = new RationalComplexNumber(c, d);
         RationalComplexVector2D p = new RationalComplexVector2D(e, f);
         System.out.println(x5.multVector(p));//(-1/48 - 53/18 * i , -1/48 - 53/18 * i)
+
 
     }
 

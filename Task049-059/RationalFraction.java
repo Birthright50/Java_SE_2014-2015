@@ -139,10 +139,10 @@ public class RationalFraction {
     public boolean equals(RationalFraction v) {
         this.reduce();
         v.reduce();
-        if(this.a!=v.getA()&&this.b!=v.getB()){
-            return false;
+        if((this.toString()).equals(v.toString())){
+            return true;
         }
-        return true;
+        return false;
     }
     public int numberPart(){
         int a = this.a/this.b;
@@ -164,5 +164,6 @@ public class RationalFraction {
         System.out.println(x2.value()); //(0,(6))
         System.out.println(x1.equals(x2));//false
         System.out.println(x1.numberPart()); //0
+
     }
 }

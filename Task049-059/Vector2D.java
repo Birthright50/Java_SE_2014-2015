@@ -58,7 +58,7 @@ public class Vector2D {
     }
 
     public String toString() {
-        String g = "(" + this.x + " " + this.y + ")";
+        String g = "(" + this.x + " , " + this.y + ")";
         return g;
     }
 
@@ -73,7 +73,7 @@ public class Vector2D {
     }
 
     public double cos(Vector2D v) {
-        double a = (this.scalarProduct(v)) / this.length() / Math.sqrt(v.getX() * v.getX() + v.getY() * v.getY());
+        double a = (this.scalarProduct(v)) / this.length() / v.length();
         return a;
     }
 

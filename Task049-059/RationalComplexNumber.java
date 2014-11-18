@@ -15,6 +15,9 @@ public class RationalComplexNumber {
     }
 
     public String toString() {
+        if(((this.y.toString()).substring(0, 1)).equals("-")){
+            return (this.x + " " + this.y + " * i");
+        }
         return (this.x + " + " + this.y + " * i");
     }
 
@@ -63,13 +66,11 @@ public class RationalComplexNumber {
     }
 
     public boolean equals(RationalComplexNumber v) {
-        if (this.x != v.x) {
-            return false;
+        if(this.x.equals(v.getX())&&this.y.equals(v.getY())){
+            return true;
         }
-        if (this.y != v.y) {
-            return false;
-        }
-        return true;
+
+        return false;
 
     }
 }

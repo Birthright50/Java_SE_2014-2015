@@ -36,7 +36,7 @@ public class RationalVector2D {
     }
 
     public String toString() {
-        return this.x.toString() + " " + this.y.toString();
+        return "("+this.x.toString() + " , " + this.y.toString()+")";
     }
 
     public double length() {
