@@ -156,7 +156,7 @@ public class Matrix2X2 {
         return v;
     }
 
-    public Vector2D mult(Vector2D v) {
+    public Vector2D multVector(Vector2D v) {
         return new Vector2D(this.a[0][0] * v.getX() + this.a[0][1] * v.getY(), this.a[1][0] * v.getX() + this.a[1][1] * v.getY());
     }
 
@@ -178,7 +178,7 @@ public class Matrix2X2 {
         System.out.println(x2.inverseMatrix());// -2, 1.5, 1, -0.5
         System.out.println(x2.equivalentDiagonal());//1, 0, 0, 4
         Vector2D j = new Vector2D(5, 6);
-        System.out.println(x2.mult(j));//23, 34
+        System.out.println(x2.multVector(j));//23, 34
         Matrix2X2 h = new Matrix2X2(1, 2, 1, 2);
         System.out.println(h.det());
         double m[][] = {
