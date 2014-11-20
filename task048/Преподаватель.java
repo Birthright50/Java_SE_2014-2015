@@ -3,27 +3,27 @@
  */
 public class Преподаватель {
     private String fio;
-    private String predmet;
+    private String subject;
 
     public Преподаватель(String s, String y) {
         fio = s;
-        predmet = y;
+        subject = y;
     }
 
     public String getFio() {
         return fio;
     }
 
-    public String getpredmet() {
-        return predmet;
+    public String getSubject() {
+        return subject;
     }
 
     public void setFio(String s) {
         fio = s;
     }
 
-    public void setpredmet(String y) {
-        predmet = y;
+    public void setSubject(String y) {
+        subject = y;
     }
 
     public void RateStudent(Student a) {
@@ -42,7 +42,7 @@ public class Преподаватель {
                 }
             }
         }
-        System.out.println("Преподаватель " + fio + " оценил студента с именем " + a.getFio() + " по предмету " + predmet + " на оценку " + g);
+        System.out.println("Преподаватель " + fio + " оценил студента с именем " + a.getFio() + " по предмету " + subject + " на оценку " + g);
     }
 }
 

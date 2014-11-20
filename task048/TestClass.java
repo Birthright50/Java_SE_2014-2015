@@ -9,9 +9,9 @@ public class TestClass {
         Student.studentInfo();
         Преподаватель v = new Преподаватель(sc.nextLine(), sc.nextLine());
         System.out.println(v.getFio());
-        System.out.println(v.getpredmet());
+        System.out.println(v.getSubject());
         v.setFio(sc.nextLine());
-        v.setpredmet(sc.nextLine());
+        v.setSubject(sc.nextLine());
         Student s = new Student(sc.nextLine(), sc.nextInt());
         Student s2 = new Student(sc.nextLine(), sc.nextInt());
         System.out.println(s.getFio());
