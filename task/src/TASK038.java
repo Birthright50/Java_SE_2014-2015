@@ -10,7 +10,7 @@ public class TASK038 {
         double[][] a = new double[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                a[i][j] = sc.nextInt();
+                a[i][j] = sc.nextDouble();
             }
         }
         for (int i = 0; i < n - 1; i++) {
