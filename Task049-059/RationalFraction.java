@@ -2,37 +2,37 @@
  * Created by BirthrightL on 15.11.2014.
  */
 public class RationalFraction {
-    private int a;
-    private int b;
+    private int numerator;
+    private int denominator;
 
     public RationalFraction(int a, int b) {
-        this.a = a;
-        this.b = b;
+        this.numerator = a;
+        this.denominator = b;
     }
 
     public RationalFraction() {
         this(0, 1);
     }
 
-    public int getA() {
-        return a;
+    public int getNumerator() {
+        return numerator;
     }
 
-    public void setA(int a) {
-        this.a = a;
+    public void setNumerator(int numerator) {
+        this.numerator = numerator;
     }
 
-    public int getB() {
-        return b;
+    public int getDenominator() {
+        return denominator;
     }
 
-    public void setB(int b) {
-        this.b = b;
+    public void setDenominator(int denominator) {
+        this.denominator = denominator;
     }
 
     public void reduce() {
-        int g = Math.abs(this.a);
-        int h = Math.abs(this.b);
+        int g = Math.abs(this.numerator);
+        int h = Math.abs(this.denominator);
         int l = 0;
         while (g != 0 && h != 0) {
             if (g > h) {
@@ -42,18 +42,18 @@ public class RationalFraction {
             }
             l = h + g;
         }
-        this.a /= l;
-        this.b /= l;
+        this.numerator /= l;
+        this.denominator /= l;
     }
 
     public RationalFraction add(RationalFraction v) {
-        if (this.b == v.getB()) {
-            RationalFraction v1 = new RationalFraction(this.a + v.getA(), v.getB());
+        if (this.denominator == v.getDenominator()) {
+            RationalFraction v1 = new RationalFraction(this.numerator + v.getNumerator(), v.getDenominator());
             v1.reduce();
 
             return v1;
         } else {
-            RationalFraction v1 = new RationalFraction(this.a * v.getB() + v.getA() * this.b, this.b * v.getB());
+            RationalFraction v1 = new RationalFraction(this.numerator * v.getDenominator() + v.getNumerator() * this.denominator, this.denominator * v.getDenominator());
             v1.reduce();
 
             return v1;
@@ -61,78 +61,78 @@ public class RationalFraction {
     }
 
     public void add2(RationalFraction v) {
-        if (this.b == v.getB()) {
-            this.a += v.getA();
+        if (this.denominator == v.getDenominator()) {
+            this.numerator += v.getNumerator();
             this.reduce();
         } else {
-            this.a = this.a * v.getB() + v.getA() * this.b;
-            this.b *= v.getB();
+            this.numerator = this.numerator * v.getDenominator() + v.getNumerator() * this.denominator;
+            this.denominator *= v.getDenominator();
             this.reduce();
         }
     }
 
     public RationalFraction sub(RationalFraction v) {
-        if (this.b == v.getB()) {
-            RationalFraction v1 = new RationalFraction(this.a - v.getA(), v.getB());
+        if (this.denominator == v.getDenominator()) {
+            RationalFraction v1 = new RationalFraction(this.numerator - v.getNumerator(), v.getDenominator());
             v1.reduce();
             return v1;
         } else {
-            RationalFraction v1 = new RationalFraction(this.a * v.getB() - v.getA() * this.b, this.b * v.getB());
+            RationalFraction v1 = new RationalFraction(this.numerator * v.getDenominator() - v.getNumerator() * this.denominator, this.denominator * v.getDenominator());
             v1.reduce();
             return v1;
         }
     }
 
     public void sub2(RationalFraction v) {
-        if (this.b == v.getB()) {
-            this.a -= v.getA();
+        if (this.denominator == v.getDenominator()) {
+            this.numerator -= v.getNumerator();
             this.reduce();
         } else {
-            this.a = this.a * v.getB() - v.getA() * this.b;
-            this.b *= v.getB();
+            this.numerator = this.numerator * v.getDenominator() - v.getNumerator() * this.denominator;
+            this.denominator *= v.getDenominator();
             this.reduce();
         }
     }
 
     public RationalFraction mult(RationalFraction v) {
-        RationalFraction v1 = new RationalFraction(this.a * v.getA(), this.b * v.getB());
+        RationalFraction v1 = new RationalFraction(this.numerator * v.getNumerator(), this.denominator * v.getDenominator());
         v1.reduce();
         return v1;
     }
 
     public void mult2(RationalFraction v) {
-        this.a *= v.getA();
-        this.b *= v.getB();
+        this.numerator *= v.getNumerator();
+        this.denominator *= v.getDenominator();
         this.reduce();
     }
 
     public RationalFraction div(RationalFraction v) {
-        RationalFraction v1 = new RationalFraction(this.a * v.getB(), this.b * v.getA());
+        RationalFraction v1 = new RationalFraction(this.numerator * v.getDenominator(), this.denominator * v.getNumerator());
         v1.reduce();
         return v1;
     }
 
     public void div2(RationalFraction v) {
-        this.a *= v.getB();
-        this.b *= v.getA();
+        this.numerator *= v.getDenominator();
+        this.denominator *= v.getNumerator();
         this.reduce();
     }
 
     public String toString() {
-        if(this.b<0 & this.a<0){
-            String s = -this.a + "/" + -this.b;
+        if(this.denominator <0 & this.numerator <0){
+            String s = -this.numerator + "/" + -this.denominator;
             return s;
         }
-        if (this.b < 0) {
-            String s = "-" + this.a + "/" + -this.b;
+        if (this.denominator < 0) {
+            String s = "-" + this.numerator + "/" + -this.denominator;
             return s;
         }
-        String s = this.a + "/" + this.b;
+        String s = this.numerator + "/" + this.denominator;
         return s;
     }
 
     public double value() {
-        double s = this.a * 1.0 / this.b;
+        double s = this.numerator * 1.0 / this.denominator;
         return s;
     }
 
@@ -145,7 +145,7 @@ public class RationalFraction {
         return false;
     }
     public int numberPart(){
-        int a = this.a/this.b;
+        int a = this.numerator /this.denominator;
         return a;
     }
 

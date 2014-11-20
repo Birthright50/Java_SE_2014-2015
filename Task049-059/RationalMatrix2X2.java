@@ -45,7 +45,7 @@ public class RationalMatrix2X2 {
             return new RationalFraction();
         }
         RationalFraction x = (this.a[0][0].mult(this.a[1][1])).sub(this.a[1][0].mult(this.a[0][1]));
-        return new RationalFraction(x.getA(), x.getB());
+        return new RationalFraction(x.getNumerator(), x.getDenominator());
     }
 
     public RationalVector2D multVector(RationalVector2D v) {

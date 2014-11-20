@@ -2,12 +2,12 @@
  * Created by BirthrightL on 16.11.2014.
  */
 public class RationalComplexNumber {
-    private RationalFraction x;
-    private RationalFraction y;
+    private RationalFraction real;
+    private RationalFraction imaginary;
 
     public RationalComplexNumber(RationalFraction x, RationalFraction y) {
-        this.x = x;
-        this.y = y;
+        this.real = x;
+        this.imaginary = y;
     }
 
     public RationalComplexNumber() {
@@ -15,38 +15,38 @@ public class RationalComplexNumber {
     }
 
     public String toString() {
-        if(((this.y.toString()).substring(0, 1)).equals("-")){
-            return (this.x + " " + this.y + " * i");
+        if(((this.imaginary.toString()).substring(0, 1)).equals("-")){
+            return (this.real + " " + this.imaginary + " * i");
         }
-        return (this.x + " + " + this.y + " * i");
+        return (this.real + " + " + this.imaginary + " * i");
     }
 
-    public RationalFraction getX() {
-        return x;
+    public RationalFraction getReal() {
+        return real;
     }
 
-    public void setX(RationalFraction x) {
-        this.x = x;
+    public void setReal(RationalFraction real) {
+        this.real = real;
     }
 
-    public RationalFraction getY() {
-        return y;
+    public RationalFraction getImaginary() {
+        return imaginary;
     }
 
-    public void setY(RationalFraction y) {
-        this.y = y;
+    public void setImaginary(RationalFraction imaginary) {
+        this.imaginary = imaginary;
     }
 
     public RationalComplexNumber add(RationalComplexNumber v) {
-        return new RationalComplexNumber(this.x.add(v.getX()), this.y.add(v.getY()));
+        return new RationalComplexNumber(this.real.add(v.getReal()), this.imaginary.add(v.getImaginary()));
     }
 
     public RationalComplexNumber sub(RationalComplexNumber v) {
-        return new RationalComplexNumber(this.x.sub(v.getX()), this.y.sub(v.getY()));
+        return new RationalComplexNumber(this.real.sub(v.getReal()), this.imaginary.sub(v.getImaginary()));
     }
 
     public RationalComplexNumber mult(RationalComplexNumber v) {
-        return new RationalComplexNumber((this.x.mult(v.x)).sub(this.y.mult(v.y)), (this.y.mult(v.x)).add(this.x.mult(v.y)));
+        return new RationalComplexNumber((this.real.mult(v.real)).sub(this.imaginary.mult(v.imaginary)), (this.imaginary.mult(v.real)).add(this.real.mult(v.imaginary)));
     }
 
     public static void main(String[] args) {
@@ -66,7 +66,7 @@ public class RationalComplexNumber {
     }
 
     public boolean equals(RationalComplexNumber v) {
-        if(this.x.equals(v.getX())&&this.y.equals(v.getY())){
+        if(this.real.equals(v.getReal())&&this.imaginary.equals(v.getImaginary())){
             return true;
         }
 

@@ -46,7 +46,7 @@ public class RationalVector2D {
 
     public RationalFraction scalarProduct(RationalVector2D v) {
         RationalFraction x = (this.x.mult(v.getX())).add(this.y.mult(v.getY()));
-        return new RationalFraction(x.getA(), x.getB());
+        return new RationalFraction(x.getNumerator(), x.getDenominator());
     }
 
     public boolean equals(RationalVector2D v) {

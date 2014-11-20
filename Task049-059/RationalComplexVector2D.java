@@ -40,7 +40,7 @@ public class RationalComplexVector2D {
 
     public RationalComplexNumber scalarProduct(RationalComplexVector2D v) {
         RationalComplexNumber h = (this.x.mult(v.getX())).add(this.y.mult(v.getY()));
-        return new RationalComplexNumber(h.getX(), h.getY());
+        return new RationalComplexNumber(h.getReal(), h.getImaginary());
     }
 
     public static void main(String[] args) {

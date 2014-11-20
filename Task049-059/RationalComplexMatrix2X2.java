@@ -45,7 +45,7 @@ public class RationalComplexMatrix2X2 {
             return new RationalComplexNumber();
         }
         RationalComplexNumber v = (this.a[0][0].mult(this.a[1][1])).sub(this.a[1][0].mult(this.a[0][1]));
-        return new RationalComplexNumber(v.getX(), v.getY());
+        return new RationalComplexNumber(v.getReal(), v.getImaginary());
     }
 
     public RationalComplexVector2D multVector(RationalComplexVector2D v) {
