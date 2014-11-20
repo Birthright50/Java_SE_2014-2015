@@ -8,14 +8,7 @@ public class Matrix2X2 {
     static Scanner sc = new Scanner(System.in);
 
     public Matrix2X2(double[][] a) {
-        a[0][0] = sc.nextDouble();
-        this.a[0][0] = a[0][0];
-        a[0][1] = sc.nextDouble();
-        this.a[0][1] = a[0][1];
-        a[1][0] = sc.nextDouble();
-        this.a[1][0] = a[1][0];
-        a[1][1] = sc.nextDouble();
-        this.a[1][1] = a[1][1];
+        this.a = a;
     }
 
     public double[][] getA() {
@@ -186,7 +179,14 @@ public class Matrix2X2 {
         System.out.println(x2.equivalentDiagonal());//1, 0, 0, 4
         Vector2D j = new Vector2D(5, 6);
         System.out.println(x2.mult(j));//23, 34
-        Matrix2X2 h = new Matrix2X2(1,2,1,2);
+        Matrix2X2 h = new Matrix2X2(1, 2, 1, 2);
         System.out.println(h.det());
+        double m[][] = {
+                {1, 2},
+                {3, 4},
+
+        };
+        Matrix2X2 l2 = new Matrix2X2(m);
+        System.out.println(l2);//1,2,3,4
     }
 }
