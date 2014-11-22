@@ -11,15 +11,17 @@ public class TASK026 {
         System.out.println("Ввод х");
         double x = sc.nextDouble();
         double numerator = x - 1;
-        double denominator = 12;
-        double s = numerator / denominator;
+        double denominator = 4;
+        double den1 = 3;
+        double s = numerator / (denominator * den1);
         double z = 1;
         if (x == 1)
             System.out.println(0);
         else {
             for (int i = 2; Math.abs(z) > EPS; i++) {
                 numerator *= (x - 1);
-                denominator = denominator * (3 * i) * (i * i + 3) / ((i - 1) * (i - 1) + 3);
+                den1 *= (3 * i);
+                denominator = (den1 * (i * i + 3));
                 z = numerator / denominator;
                 s = s + z;
             }
