@@ -8,16 +8,16 @@ public class TASK030 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int l;
-        int chet = 0;
-        int nechet = 0;
-        boolean q = true;
-        for (int i = 0; i < n; i++) {
+        int even = 0;
+        int odd = 0;
+        boolean q = false;
+        for (int i = 0; even <= 2 && odd <= 2 && i < n; i++) {
             int a = sc.nextInt();
-            if ((a >= 100 && a <= 999) | (a >= 10000 && a < 99999) | (a <= -100 && a >= -999) | (a <= -10000 && a >= -99999)) {
+            if ((a >= 100 && a <= 999) || (a >= 10000 && a < 99999) || (a <= -100 && a >= -999) || (a <= -10000 && a >= -99999)) {
                 int j = 0;
                 int h = 0;
                 int g = 0;
-                while (a > 0) {
+                while (a > 0 || a < 0) {
                     l = a % 10;
                     a = a / 10;
                     j++;
@@ -28,15 +28,18 @@ public class TASK030 {
                     }
                 }
                 if (j == g) {
-                    chet++;
-                }
-                if (j == h) {
-                    nechet++;
+                    even++;
+                } else {
+                    if (j == h) {
+                        odd++;
+                    }
                 }
             }
-        }
-        if ((chet < 2 && chet > 2) | (nechet < 2 && nechet > 2)) {
-            q = false;
+            System.out.println(even);
+            if (even == 2 || odd == 2) {
+                q = true;
+            }
+
         }
         System.out.println(q);
     }
