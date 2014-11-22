@@ -11,7 +11,7 @@ public class TASK030 {
         int even = 0;
         int odd = 0;
         boolean q = false;
-        for (int i = 0; even <= 2 && odd <= 2 && i < n; i++) {
+        for (int i = 0; even + odd <= 2 && i < n; i++) {
             int a = sc.nextInt();
             if ((a >= 100 && a <= 999) || (a >= 10000 && a < 99999) || (a <= -100 && a >= -999) || (a <= -10000 && a >= -99999)) {
                 int j = 0;
@@ -36,7 +36,7 @@ public class TASK030 {
                 }
             }
         }
-        if (even == 2 || odd == 2 || (even == 1 && odd == 1)) {
+        if (even + odd == 2) {
             q = true;
         }
         System.out.println(q);
