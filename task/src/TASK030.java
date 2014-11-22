@@ -35,9 +35,8 @@ public class TASK030 {
                     }
                 }
             }
-
         }
-        if (even == 2 || odd == 2 || (even==1 && odd == 1)) {
+        if (even == 2 || odd == 2 || (even == 1 && odd == 1)) {
             q = true;
         }
         System.out.println(q);
