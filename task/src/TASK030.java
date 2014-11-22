@@ -35,11 +35,10 @@ public class TASK030 {
                     }
                 }
             }
-            System.out.println(even);
-            if (even == 2 || odd == 2) {
-                q = true;
-            }
 
+        }
+        if (even == 2 || odd == 2 || (even==1 && odd == 1)) {
+            q = true;
         }
         System.out.println(q);
     }
