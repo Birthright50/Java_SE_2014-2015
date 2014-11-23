@@ -17,21 +17,74 @@ public class TASK032 {
             b[i] = sc.nextInt();
         }
         if (q >= j) {
-            for (int i = 0; i < j; i++) {
-                a[i + q - j] = a[i + q - j] + b[i];
+            int[] c = new int[q + 1];
+            int k = 0;
+            for (int i = q - 1; j > 0; i--, j--) {
+                int m = a[i] + b[j - 1] + k;
+                if (m > 9) {
+                    k = 1;
+                    c[i + 1] = m % 10;
+                } else {
+                    k = 0;
+                    c[i + 1] = m;
+                }
             }
-            for (int i = 0; i < q; i++) {
-                System.out.print(a[i] + " ");
+            if (a.length == b.length) {
+                c[0] = k;
+                if (c[0] > 0) {
+                    for (int i = 0; i < c.length; i++) {
+                        System.out.print(c[i] + " ");
+                    }
+                    return;
+                } else {
+                    for (int i = 1; i < c.length; i++) {
+                        System.out.print(c[i] + " ");
+                    }
+                    return;
+                }
+
+            } else {
+                c[a.length - b.length - 1] = k;
+                for (int i = a.length - b.length - 2; i >= 0; i--) {
+                    c[i + 1] = a[i];
+                }
             }
+            if (c[0] > 0) {
+                for (int i = 0; i < c.length; i++) {
+                    System.out.print(c[i] + " ");
+                }
+                return;
+            } else {
+                for (int i = 1; i < c.length; i++) {
+                    System.out.print(c[i] + " ");
+                }
+                return;
+            }
+
         } else {
-            for (int i = 0; i < q; i++) {
-                b[i + j - q] = b[i + j - q] + a[i];
-            }
-            for (int i = 0; i < j; i++) {
-                System.out.print(b[i] + " ");
+            int[] c = new int[j + 1];
+            int k = 0;
+            for (int i = j - 1; q > 0; i--, q--) {
+                int m = a[q - 1] + b[i] + k;
+                if (m > 9) {
+                    k = 1;
+                    c[i + 1] = m % 10;
 
+                } else {
+                    k = 0;
+                    c[i + 1] = m;
 
+                }
             }
+
+            c[b.length - a.length-1] = k + b[b.length - a.length - 1];
+            for (int i = b.length - a.length - 2; i >= 0; i--) {
+                c[i + 1] = b[i];
+            }
+            for (int i = 0; i < c.length; i++) {
+                System.out.print(c[i] + " ");
+            }
+
         }
     }
 }
