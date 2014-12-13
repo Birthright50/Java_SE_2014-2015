@@ -12,7 +12,6 @@ public class TASK034 {
         for (int i = 0; i < n; i++) {
             a[i] = sc.nextInt();
         }
-        long d = System.nanoTime();
         int sum = a[0] + a[1] + a[2];
         for (int i = 1; i < n - 2; i++) {
             int l = a[i] + a[i + 1] + a[i + 2];
@@ -20,7 +19,6 @@ public class TASK034 {
                 sum = l;
             }
         }
-        System.out.println(System.nanoTime() - d);
         System.out.println(sum);
 
     }
