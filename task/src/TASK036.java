@@ -11,13 +11,12 @@ public class TASK036 {
         for (int i = 0; i < n; i++) {
             a[i] = sc.nextInt();
         }
+        int l = a[0];
         for (int i = 1; i < n; i++) {
-           for(int j = 0;(a[i]>a[j])&& j<n; j++){
-               if(a[i]>a[j]){
-                   System.out.print(a[j]+" ");
-               }
+            if (a[i] > l) {
+                System.out.print(a[i] + " ");
+                l = a[i];
             }
-            System.out.println();
         }
     }
 }
