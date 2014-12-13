@@ -13,27 +13,11 @@ public class TASK037 {
                 a[i][j] = sc.nextInt();
             }
         }
-        if (n % 2 == 0) {
-            for (int i = 0; i < n / 2 - 1; i++) {
-                for (int j = 1 + i; j < n - (i + 1); j++) {
-                    a[i][j] = 0;
-                }
-            }
-            for (int i = n - 1; i > n / 2 - 1; i--) {
-                for (int j = n - i; j < i; j++) {
-                    a[i][j] = 0;
-                }
-            }
-        } else {
-            for (int i = 0; i < n / 2; i++) {
-                for (int j = 1 + i; j < n - i - 1; j++) {
-                    a[i][j] = 0;
-                }
-            }
-            for (int i = n - 1; i > n / 2; i--) {
-                for (int j = n - i; j < i; j++) {
-                    a[i][j] = 0;
-                }
+        int l = n;
+        for (int i = 0; i < n / 2; i++, l--) {
+            for (int j = 1 + i; j < n - (i + 1); j++) {
+                a[i][j] = 0;
+                a[l - 1][j] = 0;
             }
         }
         for (int i = 0; i < n; i++) {
