@@ -7,23 +7,13 @@ public class TASK044 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String abs = sc.nextLine();
-        boolean q = true;
+        String abs1, abs2;
         String[] a = abs.split(" ");
         for (String x : a) {
-            char b = x.charAt(0);
-            String n = Character.toString(b);
-            String c = n.toUpperCase();
-            if (n.equals(c)) {
-                for (int i = 1; q && i < x.length(); i++) {
-                    b = x.charAt(i);
-                    n = Character.toString(b);
-                    c = n.toLowerCase();
-                    q = n.equals(c);
-                }
-            } else {
-                q = false;
-            }
-            if (q) {
+            abs1 = x.toLowerCase();
+            abs2 = x.toUpperCase();
+            int length = x.length();
+            if (x.charAt(0) == abs2.charAt(0) && x.substring(1, length).equals(abs1.substring(1, length))) {
                 System.out.println(x);
             }
         }
