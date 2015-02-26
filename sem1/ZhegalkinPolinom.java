@@ -42,7 +42,7 @@ public class ZhegalkinPolinom {
         }
     }
 
-    public ZhegalkinPolinom constructPolynomial(String s) {
+    public ZhegalkinPolinom(String s) {
         String[] b = s.split("[+]");
         for (String x : b) {
             Konj j;
@@ -64,10 +64,19 @@ public class ZhegalkinPolinom {
             j = new Konj(a, null);
             checkHead(this, j);
         }
-        return this;
+
+    }
+
+    private void sortVariables() {
+        Konj j = this.head;
+        while (j != null) {
+            Collections.sort(j.getArray());
+            j = j.getNext();
+        }
     }
 
     private String fromHeadToTheLast(Konj j) {
+
         String s = "";
         while (j.getNext() != null) {
             if (j.getArray().get(0) == 0) {
@@ -105,6 +114,10 @@ public class ZhegalkinPolinom {
             s = s + "+";
         }
         j = j.getNext();
+        if (head == last) {
+            s = s.substring(0, s.length() - 1);
+            return s;
+        }
         s = s + fromHeadToTheLast(j);
         return s;
     }
@@ -182,13 +195,16 @@ public class ZhegalkinPolinom {
         ZhegalkinPolinom g = new ZhegalkinPolinom(this.head, this.last);
         g.last.setNext(p.getHead());
         g.last = p.getLast();
-        Konj j = this.head;
-        Konj a = this.head;
-        Konj q = this.head;
-        while (j != null) {
+        g.sortVariables();
+        Konj j = g.head;
+        Konj a = g.head.getNext();
+        Konj q = g.head.getNext();
+        ArrayList<ArrayList<Integer>> h = new ArrayList<ArrayList<Integer>>();
+        while (q != null) {
             while (a != null) {
                 if (j.getArray().equals(a.getArray())) {
-
+                    h.add(j.getArray());
+                    break;
                 }
                 a = a.getNext();
             }
@@ -196,28 +212,55 @@ public class ZhegalkinPolinom {
             a = q;
             j = j.getNext();
         }
+        for (ArrayList<Integer> aH : h) {
+            delConjunct(g, aH);
+        }
         return g;
     }
 
+    private void delConjunct(ZhegalkinPolinom a, ArrayList<Integer> x) {
+        if (a.head.getArray().equals(x)) {
+            a.head = a.head.getNext();
+        }
+        if (a.head.getArray().equals(x)) {
+            a.head = a.head.getNext();
+            return;
+        }
+        Konj t = a.head;
+        int i = 0;
+        while (i < 2 && t != null && t.getNext() != null) {
+            if (t.getNext().getArray().equals(x)) {
+                if (a.last.getArray().equals(t.getNext().getArray())) {
+                    a.last = t;
+                }
+                t.setNext(t.getNext().getNext());
+                i++;
+            }
+            t = t.getNext();
+        }
+    }
+
+
     public boolean value(boolean[] v) {
+        this.sortVariables();
         Konj j = this.head;
         int k = 0;
         while (j != null) {
             if (j.getArray().get(0) == 0) {
                 k++;
                 j = j.getNext();
+                System.out.println(k);
                 continue;
             }
             boolean l = true;
-            for (int i = 0; l && i < j.getArray().size(); i++) {
-                for (int q = 1; l && q <= v.length; q++) {
-                    if (j.getArray().get(i) == q) {
-                        if (v[q - 1]) {
-                            break;
-                        } else {
-                            l = false;
-                        }
+            for (int i = 0, q = 0; l && i < j.getArray().size(); ) {
+                if (j.getArray().get(i) == q + 1) {
+                    if (!v[q]) {
+                        l = false;
                     }
+                    i++;
+                } else {
+                    q++;
                 }
             }
             if (l) {
@@ -249,8 +292,7 @@ public class ZhegalkinPolinom {
 
     public static void main(String[] args) {
         String s = "X1&X2&X3+X1+X3&X2+1";
-        ZhegalkinPolinom x = new ZhegalkinPolinom();
-        x.constructPolynomial(s);
+        ZhegalkinPolinom x = new ZhegalkinPolinom(s);
         System.out.println(x);
         ArrayList<Integer> a = new ArrayList<Integer>();
         a.add(1);
@@ -267,10 +309,17 @@ public class ZhegalkinPolinom {
         q[2] = false;
         q[3] = true;
         String s55 = "X1&X2&X3+X1+X2&X3+1+X4";
-        ZhegalkinPolinom s66 = new ZhegalkinPolinom();
-        s66.constructPolynomial(s55);
+        ZhegalkinPolinom s66 = new ZhegalkinPolinom(s55);
         System.out.println(s66.value(q));
         s1.sortByLength();
         System.out.println(s1);
+        ZhegalkinPolinom p = s1.sum(s66);
+        System.out.println(p);
+        String s3 = "X1&X2&X3+X1+X3&X2";
+        ZhegalkinPolinom l = new ZhegalkinPolinom(s);
+        ZhegalkinPolinom l1 = new ZhegalkinPolinom(s3);
+        ZhegalkinPolinom z = l.sum(l1);
+        System.out.println(z);
+
     }
 }

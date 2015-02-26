@@ -24,7 +24,6 @@ public class Konj {
     }
 
     public Konj() {
-
     }
 
     public Konj(ArrayList<Integer> i, Konj conjunct) {
@@ -32,7 +31,5 @@ public class Konj {
         this.next = conjunct;
     }
 
-    public static void main(String[] args) {
 
-    }
 }
