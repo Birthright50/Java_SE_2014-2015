@@ -249,7 +249,6 @@ public class ZhegalkinPolinom {
             if (j.getArray().get(0) == 0) {
                 k++;
                 j = j.getNext();
-                System.out.println(k);
                 continue;
             }
             boolean l = true;
@@ -259,6 +258,7 @@ public class ZhegalkinPolinom {
                         l = false;
                     }
                     i++;
+                    q++;
                 } else {
                     q++;
                 }
