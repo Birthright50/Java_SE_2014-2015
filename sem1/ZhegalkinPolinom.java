@@ -46,15 +46,12 @@ public class ZhegalkinPolinom {
         String[] b = s.split("[+]");
         for (String x : b) {
             Konj j;
-            try {
-                if (Integer.valueOf(x).equals(1)) {
-                    ArrayList<Integer> a1 = new ArrayList<Integer>();
-                    a1.add(0, 0);
-                    j = new Konj(a1, null);
-                    checkHead(this, j);
-                    continue;
-                }
-            } catch (NumberFormatException e) {
+            if (x.length() == 1) {
+                ArrayList<Integer> a1 = new ArrayList<Integer>();
+                a1.add(0, 0);
+                j = new Konj(a1, null);
+                checkHead(this, j);
+                continue;
             }
             ArrayList<Integer> a = new ArrayList<Integer>();
             String[] l = x.split("");
@@ -75,8 +72,8 @@ public class ZhegalkinPolinom {
         }
     }
 
-    private String fromHeadToTheLast(Konj j) {
-
+    private String fromHeadToTheLast() {
+        Konj j = this.head.getNext();
         String s = "";
         while (j.getNext() != null) {
             if (j.getArray().get(0) == 0) {
@@ -113,16 +110,18 @@ public class ZhegalkinPolinom {
             s = s.substring(0, s.length() - 1);
             s = s + "+";
         }
-        j = j.getNext();
         if (head == last) {
             s = s.substring(0, s.length() - 1);
             return s;
         }
-        s = s + fromHeadToTheLast(j);
+
+        s = s + fromHeadToTheLast();
         return s;
     }
 
     public void insert(Konj j) {
+        this.sortVariables();
+        Collections.sort(j.getArray());
         Konj a = this.head;
         while (a != null) {
             if ((a.getArray()).equals(j.getArray())) {
@@ -147,8 +146,7 @@ public class ZhegalkinPolinom {
                 j.getArray().add(i);
             }
             if (j.getArray().get(0) == 0) {
-                j.getArray().clear();
-                j.getArray().add(i);
+                j.getArray().add(0, i);
             }
             j = j.getNext();
         }
@@ -165,8 +163,7 @@ public class ZhegalkinPolinom {
             }
         }
         if (s.head.getArray().get(0) == 0) {
-            s.head.getArray().clear();
-            s.head.getArray().add(i);
+            s.head.getArray().add(0, i);
         }
         if (q) {
             s.head.getArray().add(i);
@@ -185,8 +182,7 @@ public class ZhegalkinPolinom {
             s.last.getArray().add(i);
         }
         if (s.last.getArray().get(0) == 0) {
-            s.last.getArray().clear();
-            s.last.getArray().add(i);
+            s.last.getArray().add(0, i);
         }
         return s;
     }
@@ -246,24 +242,7 @@ public class ZhegalkinPolinom {
         Konj j = this.head;
         int k = 0;
         while (j != null) {
-            if (j.getArray().get(0) == 0) {
-                k++;
-                j = j.getNext();
-                continue;
-            }
-            boolean l = true;
-            for (int i = 0, q = 0; l && i < j.getArray().size(); ) {
-                if (j.getArray().get(i) == q + 1) {
-                    if (!v[q]) {
-                        l = false;
-                    }
-                    i++;
-                    q++;
-                } else {
-                    q++;
-                }
-            }
-            if (l) {
+            if (j.checkConjunct(v)) {
                 k++;
             }
             j = j.getNext();
@@ -320,6 +299,5 @@ public class ZhegalkinPolinom {
         ZhegalkinPolinom l1 = new ZhegalkinPolinom(s3);
         ZhegalkinPolinom z = l.sum(l1);
         System.out.println(z);
-
     }
 }

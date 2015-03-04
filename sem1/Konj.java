@@ -31,5 +31,23 @@ public class Konj {
         this.next = conjunct;
     }
 
+    public boolean checkConjunct(boolean[] v) {
+        if (this.array.get(0) == 0) {
+            return true;
+        }
+        for (int i = 0, q = 0; i < this.array.size(); ) {
+            if (this.array.get(i) == q + 1) {
+                if (!v[q]) {
+                    return false;
+                }
+                i++;
+                q++;
+            } else {
+                q++;
+            }
+        }
+        return true;
+    }
+
 
 }
