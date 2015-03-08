@@ -146,7 +146,7 @@ public class ZhegalkinPolinom {
                 j.getArray().add(i);
             }
             if (j.getArray().get(0) == 0) {
-                j.getArray().add(0, i);
+                j.getArray().set(0, i);
             }
             j = j.getNext();
         }
@@ -163,7 +163,7 @@ public class ZhegalkinPolinom {
             }
         }
         if (s.head.getArray().get(0) == 0) {
-            s.head.getArray().add(0, i);
+            s.head.getArray().set(0, i);
         }
         if (q) {
             s.head.getArray().add(i);
@@ -182,7 +182,7 @@ public class ZhegalkinPolinom {
             s.last.getArray().add(i);
         }
         if (s.last.getArray().get(0) == 0) {
-            s.last.getArray().add(0, i);
+            s.last.getArray().set(0, i);
         }
         return s;
     }
