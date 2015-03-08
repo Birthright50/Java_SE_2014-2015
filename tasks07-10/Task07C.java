@@ -11,17 +11,15 @@ public class Task07C {
         for (int i = 0; i < n; i++) {
             p.add(sc.nextInt());
         }
-        CorrectList h = p.getHead();
-        p = h;
+        Elem a = p.getHead();
         for (int i = 0; i < n - 4; i++) {
-            p = (CorrectList) p.getNext();
+            a = a.getNext();
         }
-        p.setNext(null);
-        p = h;
-        while (p != null) {
-            System.out.print(p.getValue() + " ");
-            p = (CorrectList) p.getNext();
+        a.setNext(null);
+        a = p.getHead();
+        while (a != null) {
+            System.out.print(a.getValue() + " ");
+            a = a.getNext();
         }
-
     }
 }

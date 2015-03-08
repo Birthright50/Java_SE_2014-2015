@@ -30,46 +30,34 @@ public class Task09A {
         for (int i = 0; i < n; i++) {
             p.add(sc.nextInt());
         }
-        CorrectList h = p.getHead();
-        p = h;
-        CorrectList a;
-        int k, g;
-        if (checkPrimeNumber(p.getValue())) {
-            g = p.getValue() % 10;
-            k = theFirstDigit(p.getValue());
-            CorrectList p1 = new CorrectList();
-            p1.setValue(g);
-            p1.setNext(p.getNext());
-            p.setNext(p1);
-            a = p;
-            p = new CorrectList();
-            p.setNext(a);
-            p.setValue(k);
-            p.setHead(p);
-            h = p.getHead();
-            p = (CorrectList) p.getNext().getNext();
+        Elem e = p.getHead();
+        if (checkPrimeNumber(e.getValue())) {
+            int g = e.getValue() % 10;
+            int k = theFirstDigit(e.getValue());
+            Elem s = new Elem(k, p.getHead());
+            Elem a = new Elem(g, e.getNext());
+            p.setHead(s);
+            e.setNext(a);
+            e = e.getNext();
         }
-        while (p.getNext() != null) {
-            if (checkPrimeNumber(p.getNext().getValue())) {
-                g = p.getNext().getValue() % 10;
-                k = theFirstDigit(p.getNext().getValue());
-                CorrectList c1 = new CorrectList();
-                CorrectList c2 = new CorrectList();
-                c1.setValue(k);
-                c2.setValue(g);
-                c2.setNext(p.getNext().getNext());
-                p.getNext().setNext(c2);
-                c1.setNext(p.getNext());
-                p.setNext(c1);
-                p = (CorrectList) ((p.getNext()).getNext()).getNext();
+        while (e.getNext() != null) {
+            if (checkPrimeNumber(e.getNext().getValue())) {
+                int g = e.getNext().getValue() % 10;
+                int k = theFirstDigit(e.getNext().getValue());
+                Elem a = new Elem(g, e.getNext().getNext());
+                e.getNext().setNext(a);
+                Elem s = new Elem(k, e.getNext());
+                e.setNext(s);
+                e = e.getNext().getNext().getNext();
             } else {
-                p = (CorrectList) p.getNext();
+                e = e.getNext();
             }
         }
-        p = h;
-        while (p != null) {
-            System.out.print(p.getValue() + " ");
-            p = (CorrectList) p.getNext();
+        e = p.getHead();
+        while (e != null) {
+            System.out.print(e.getValue() + " ");
+            e = e.getNext();
         }
     }
 }
+

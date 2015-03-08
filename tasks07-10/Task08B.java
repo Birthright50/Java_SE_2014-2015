@@ -11,37 +11,25 @@ public class Task08B {
         for (int i = 0; i < n; i++) {
             p.add(sc.nextInt());
         }
-        CorrectList h = p.getHead();
-        p = h;
-        if (p.getValue() % 2 == 0) {
-            p = new CorrectList();
-            p.setValue(100);
-            p.setNext(h);
-            p.setHead(p);
-            h = p.getHead();
-            p = (CorrectList) p.getNext();
+        Elem e = p.getHead();
+        if (e.getValue() % 2 == 0) {
+            Elem s = new Elem(100, p.getHead());
+            p.setHead(s);
         }
-
-        while (p.getNext() != null) {
-            if ((p.getNext()).getValue() % 2 == 0) {
-                CorrectList c = new CorrectList();
-                c.setNext(p.getNext());
-                p.setNext(c);
-                c.setValue(100);
-                p = (CorrectList) p.getNext();
-                p = (CorrectList) p.getNext();
-
+        while (e.getNext() != null) {
+            if ((e.getNext()).getValue() % 2 == 0) {
+                Elem s = new Elem(100, e.getNext());
+                e.setNext(s);
+                e = e.getNext().getNext();
             } else {
-                p = (CorrectList) p.getNext();
+                e = e.getNext();
             }
         }
-        p = h;
-        while (p != null) {
-            System.out.print(p.getValue() + " ");
-            p = (CorrectList) p.getNext();
+        e = p.getHead();
+        while (e != null) {
+            System.out.print(e.getValue() + " ");
+            e = e.getNext();
         }
-
-        Integer.parseInt("11111", 2);
-
     }
 }
+

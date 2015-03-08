@@ -11,34 +11,26 @@ public class Task10A {
         for (int i = 0; i < n; i++) {
             p.add(sc.nextInt());
         }
-        p = p.getHead();
-        int g = 0;
+        Elem e = p.getHead();
+        Integer g = 0;
         for (int i = 0; i < n; i++) {
-            g = g * 2 + p.getValue();
-            p = (CorrectList) p.getNext();
+            g = g * 2 + e.getValue();
+            e = e.getNext();
         }
         CorrectList z = new CorrectList();
-        int q = g % 10;
-        g /= 10;
-        z.setValue(q);
-        z.setHead(z);
-        z.setLast(z);
-        CorrectList h;
-        while (g > 0) {
-            q = g % 10;
+        int[] s = new int[g.toString().length()];
+        for (int i = s.length - 1; i >= 0; i--) {
+            s[i] = g % 10;
             g /= 10;
-            h = z;
-            z = new CorrectList();
-            z.setValue(q);
-            z.setNext(h);
-            z.setHead(z);
         }
-        z = z.getHead();
-        while (z != null) {
-            System.out.print(z.getValue() + " ");
-            z = (CorrectList) z.getNext();
+        for (int value : s) {
+            z.add(value);
         }
-
+        e = z.getHead();
+        while (e != null) {
+            System.out.print(e.getValue() + " ");
+            e = e.getNext();
+        }
 
     }
 }

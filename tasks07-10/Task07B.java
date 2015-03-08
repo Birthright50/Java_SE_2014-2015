@@ -11,26 +11,28 @@ public class Task07B {
         for (int i = 0; i < n; i++) {
             p.add(sc.nextInt());
         }
-        CorrectList h = p.getHead();
-        p = p.getHead();
-
-        while (p.getValue() % 2 != 0) {
-            p = (CorrectList) p.getNext();
-            p.setHead(p);
-            h = p.getHead();
+        Elem e = p.getHead();
+        while (e != null && e.getValue() % 2 != 0) {
+            e = e.getNext();
         }
-
-        while (p != null) {
-            if (p.getNext() == null || (p.getNext()).getValue() % 2 == 0) {
-                p = (CorrectList) p.getNext();
+        if (e != null) {
+            p.setHead(e);
+        } else {
+            p.setHead(null);
+            System.out.println("Список пуст");
+            return;
+        }
+        while (e != null) {
+            if (e.getNext() == null || (e.getNext()).getValue() % 2 == 0) {
+                e = e.getNext();
                 continue;
             }
-            p.setNext(p.getNext().getNext());
+            e.setNext(e.getNext().getNext());
         }
-        p = h;
-        while (p != null) {
-            System.out.print(p.getValue() + " ");
-            p = (CorrectList) p.getNext();
+        e = p.getHead();
+        while (e != null) {
+            System.out.print(e.getValue() + " ");
+            e = e.getNext();
         }
     }
 }
