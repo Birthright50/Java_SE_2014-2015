@@ -1,10 +1,11 @@
 /**
- * Created by Birthright on 09.02.2015.
+ * Created by Birthright on 10.02.2015.
  */
 public class Elem {
     protected int value;
     protected Elem next;
     protected double valueDouble;
+
 
     public Elem(int value, Elem next) {
         this.value = value;
@@ -19,7 +20,6 @@ public class Elem {
     }
 
     public Elem(double valueDouble, Elem next) {
-
         this.next = next;
         this.valueDouble = valueDouble;
     }
@@ -33,7 +33,7 @@ public class Elem {
     }
 
     public int getValue() {
-        return value;
+        return this.value;
     }
 
     public double getValueDouble() {

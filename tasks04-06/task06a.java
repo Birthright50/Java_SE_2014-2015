@@ -8,9 +8,13 @@ public class task06a {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         CorrectList p = new CorrectList();
-        for (int i = 1; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             p.add(sc.nextInt());
         }
-        p.printList();
+        Elem a = p.getHead();
+        while (a != null) {
+            System.out.print(a.getValue() + " ");
+            a = a.getNext();
+        }
     }
 }
