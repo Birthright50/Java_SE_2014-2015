@@ -1,7 +1,7 @@
 /**
  * Created by Birthright on 10.02.2015.
  */
-public class CorrectList extends Elem {
+public class CorrectList {
     private Elem head;
     private Elem last;
 
@@ -18,15 +18,6 @@ public class CorrectList extends Elem {
     }
 
     public void setLast(Elem last) {
-        this.last = last;
-    }
-
-    @Override
-    public int getValue() {
-        return value;
-    }
-
-    public void setLast(CorrectList last) {
         this.last = last;
     }
 
