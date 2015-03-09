@@ -69,24 +69,15 @@ public class MyArrayCollection implements Collection<Integer> {
         return false;
     }
 
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        int k;
-        for (Object aX : c) {
-            k = 0;
-            for (int j = 0; j < size; j++) {
-                if (aX.equals(a[j])) {
-                    k++;
-                    break;
-                }
-            }
-            if (k == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
+      @Override
+      public boolean containsAll(Collection<?> c) {
+          for (Object aX : c) {
+              if (!contains(aX)) {
+                  return false;
+              }
+          }
+          return true;
+      }
 
     @Override
     public boolean addAll(Collection<? extends Integer> c) {
