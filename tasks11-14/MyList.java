@@ -82,6 +82,7 @@ public class MyList<T> extends MyCollection<T> implements List<T> {
             if (index == 0) {
                 T t = head.getValue();
                 head = head.getNext();
+                size--;
                 return t;
             }
             ParamElem e = head;
