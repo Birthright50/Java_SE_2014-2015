@@ -83,13 +83,12 @@ public class MyArrayList extends MyArrayCollection implements List<Integer> {
 
     @Override
     public int lastIndexOf(Object o) {
-        int q = -1;
-        for (int i = 0; i < size; i++) {
+        for (int i = size - 1; i >= 0; i--) {
             if (o.equals(a[i])) {
-                q = i;
+                return i;
             }
         }
-        return q;
+        return -1;
     }
 
     @Override
