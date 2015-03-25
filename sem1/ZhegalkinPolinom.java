@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -142,11 +143,13 @@ public class ZhegalkinPolinom {
                     break;
                 }
             }
-            if (q) {
-                j.getArray().add(i);
-            }
             if (j.getArray().get(0) == 0) {
                 j.getArray().set(0, i);
+                j = j.getNext();
+                continue;
+            }
+            if (q) {
+                j.getArray().add(i);
             }
             j = j.getNext();
         }
@@ -164,9 +167,10 @@ public class ZhegalkinPolinom {
         }
         if (s.head.getArray().get(0) == 0) {
             s.head.getArray().set(0, i);
-        }
-        if (q) {
-            s.head.getArray().add(i);
+        } else {
+            if (q) {
+                s.head.getArray().add(i);
+            }
         }
         j = j.getNext();
         this.head.setNext(j);
@@ -178,12 +182,14 @@ public class ZhegalkinPolinom {
                 break;
             }
         }
+        if (s.last.getArray().get(0) == 0) {
+            s.last.getArray().set(0, i);
+            return s;
+        }
         if (q) {
             s.last.getArray().add(i);
         }
-        if (s.last.getArray().get(0) == 0) {
-            s.last.getArray().set(0, i);
-        }
+
         return s;
     }
 
