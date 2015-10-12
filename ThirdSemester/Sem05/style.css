@@ -140,12 +140,12 @@ body {
 }
 
 .fa-eye:before {
-    content: url("eye_icon.png");
+    content: url("../../../../../Documents/Ololo/kozlovsky_405/ThirdSemester/Sem05/eye_icon.png");
 
 }
 
 .fa-comment-o:before {
-    content: url("comment.png");
+    content: url("../../../../../Documents/Ololo/kozlovsky_405/ThirdSemester/Sem05/comment.png");
 }
 
 .menu {
@@ -216,7 +216,7 @@ body {
 #header {
     width: 1000px;
     height: 250px;
-    background: url("0_f2b3_a47c192a_orig.jpg");
+    background: url("../../../../../Documents/Ololo/kozlovsky_405/ThirdSemester/Sem05/0_f2b3_a47c192a_orig.jpg");
     margin: auto;
     top: 0;
     left: 0;
