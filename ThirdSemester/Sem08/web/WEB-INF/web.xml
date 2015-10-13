@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <servlet-name>hpServlet</servlet-name>
+        <servlet-class>HPCalculatorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hpServlet</servlet-name>
+        <url-pattern>/calc_hp</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>customsServlet</servlet-name>
+        <servlet-class>CustomsCalculatorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>customsServlet</servlet-name>
+        <url-pattern>/calc_tam</url-pattern>
+    </servlet-mapping>
+</web-app>

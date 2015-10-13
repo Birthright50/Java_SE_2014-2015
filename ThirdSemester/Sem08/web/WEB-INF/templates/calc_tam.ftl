@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Таможенный калькулятор</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 </head>
 <body>
 
@@ -46,9 +46,9 @@
         </ul>
     </nav>
 </div>
-<div  id="page-wrapper">
+<div id="page-wrapper">
 
-    <form method="post"   class="form parent" role="form" id="nalog_form">
+    <form method="get"   class="form parent" role="form" id="nalog_form">
         <div  class="panel panel-primary">
             <div class="panel-heading" >
                 <h4 class="panel-title">
@@ -57,7 +57,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    
+
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label>Год выпуска</label>
@@ -66,7 +66,7 @@
                                 <option value="1">До 3-х лет</option>
                                 <option value="2">3-5 лет</option>
                                 <option value="3">Более 5 лет</option>
-                                
+
                             </select>
                         </div>
                     </div>
@@ -76,7 +76,6 @@
                             <input type="number" maxlength="4" class="form-control" name="cm" id="cm">
                         </div>
                     </div>
-
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label>Стоимость ввозимого авто (В евро)</label>
@@ -84,11 +83,11 @@
                             <div align="center" style="parent"></div>
                         </div>
                     </div>
-                   
+
 
                 </div>
-			
-				 <div id="itogo">
+
+                <div id="itogo">
                     <div align="center" class="form-group">
                         <button type="submit" class="btn btn-default navbar-btn ">Расчитать</button><br>
                         <label>Итого
@@ -98,7 +97,7 @@
                         </h4>
                     </div>
                 </div>
-				
+
             </div>
         </div>
     </form>
