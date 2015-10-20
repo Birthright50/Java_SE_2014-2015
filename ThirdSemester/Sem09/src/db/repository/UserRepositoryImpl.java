@@ -20,27 +20,26 @@ import java.util.List;
 public class UserRepositoryImpl implements UserRepository {
 
     @Override
-    public Boolean createUser(User event) {
+    public Integer createUser(User event) {
         Connection connection = ConnectionSingleton.getStatement();
         PreparedStatement preparedStatement;
-        Boolean create = false;
+        Integer create = -1;
         try {
-            preparedStatement = connection.prepareStatement("INSERT INTO users (id, login, password, salt, email, region, first_name, last_name, date, year_st, gender, car_mark) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO users (login, password, salt, email, region, first_name, last_name, date, year_st, gender, car_mark) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             byte[] salt = new byte[16];
             new SecureRandom().nextBytes(salt);
-            preparedStatement.setInt(1, User.count++);
-            preparedStatement.setString(2, event.getLogin());
-            preparedStatement.setString(3, new String(new SlowHasher().calculateSlowHash(new SHA256(), event.getPassword(), salt), StandardCharsets.UTF_8));
-            preparedStatement.setString(4, new String(salt, StandardCharsets.UTF_8));
-            preparedStatement.setString(5, event.getEmail());
-            preparedStatement.setString(6, event.getRegion());
-            preparedStatement.setString(7, event.getFirst_name());
-            preparedStatement.setString(8, event.getLast_name());
-            preparedStatement.setDate(9, event.getDate());
-            preparedStatement.setInt(10, event.getYear_st());
-            preparedStatement.setString(11, event.getGender());
-            preparedStatement.setString(12, event.getCar_mark());
-            create = preparedStatement.execute();
+                       preparedStatement.setString(1, event.getLogin());
+            preparedStatement.setString(2, new String(new SlowHasher().calculateSlowHash(new SHA256(), event.getPassword(), salt), StandardCharsets.UTF_8));
+            preparedStatement.setString(3, new String(salt, StandardCharsets.UTF_8));
+            preparedStatement.setString(4, event.getEmail());
+            preparedStatement.setString(5, event.getRegion());
+            preparedStatement.setString(6, event.getFirst_name());
+            preparedStatement.setString(7, event.getLast_name());
+            preparedStatement.setDate(8, event.getDate());
+            preparedStatement.setInt(9, event.getYear_st());
+            preparedStatement.setString(10, event.getGender());
+            preparedStatement.setString(11, event.getCar_mark());
+            create = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -56,8 +55,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Boolean deleteUser(String login, String password) {
-        Boolean delete = false;
+    public Integer deleteUser(String login, String password) {
+        Integer delete = -1;
         Connection connection = ConnectionSingleton.getStatement();
         PreparedStatement preparedStatement;
         try {
@@ -70,7 +69,7 @@ public class UserRepositoryImpl implements UserRepository {
                 String pwd = resultSet.getString(1);
                 String salt = resultSet.getString(2);
                 if (new String(new SlowHasher().calculateSlowHash(new SHA256(), password, salt.getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8).equals(pwd)) {
-                    delete = preparedStatement.execute();
+                    delete = preparedStatement.executeUpdate();
                 }
             }
 
@@ -89,8 +88,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public Boolean updateUser(User event) {
-        Boolean update = false;
+    public Integer updateUser(User event) {
+        Integer update = -1;
         Connection connection = ConnectionSingleton.getStatement();
         PreparedStatement preparedStatement;
         try {
@@ -103,7 +102,7 @@ public class UserRepositoryImpl implements UserRepository {
             preparedStatement.setInt(4, event.getYear_st());
             preparedStatement.setString(5, event.getCar_mark());
             preparedStatement.setInt(6, event.getId());
-            update = preparedStatement.execute();
+            update = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

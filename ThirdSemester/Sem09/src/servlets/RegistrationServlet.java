@@ -21,8 +21,10 @@ import java.util.HashMap;
 @WebServlet(name = "servlets.RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         HttpSession httpSession = request.getSession();
-        String username = request.getParameter("login");
+        String username = request.getParameter("input");
         String email = request.getParameter("email");
         String region = request.getParameter("input1");
         String car_mark = request.getParameter("input2");
@@ -51,7 +53,7 @@ public class RegistrationServlet extends HttpServlet {
         System.out.println(gender);
         try {
             User user = new User(username, password, email, region, first_name, last_name, new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime()), Integer.parseInt(year_st), gender, car_mark);
-            if (DBHelper.userRepository.createUser(user)) {
+            if (DBHelper.userRepository.createUser(user) > 0) {
                 httpSession.setAttribute("login", username);
                 response.sendRedirect("/news");
             } else {
@@ -66,7 +68,9 @@ public class RegistrationServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
+        response.setContentType("text/html; charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
+
         Cookie[] cookies = request.getCookies();
         Cookie username = null;
         if (cookies != null) {
