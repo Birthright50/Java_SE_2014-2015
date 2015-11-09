@@ -32,7 +32,7 @@ public class NewsServlet extends HttpServlet {
         int pages = length / 12 + 1;
         HashMap<String, Object> root = new HashMap<>();
         root.put("pages", pages);
-        root.put("list", DBHelper.newsRepository.getNewstoFrMark());
+        root.put("list", DBHelper.newsRepository.showAll());
         try {
             ConfigSingleton.getConfiguration(getServletContext()).getTemplate("profile.ftl").process(root, response.getWriter());
         } catch (TemplateException e) {

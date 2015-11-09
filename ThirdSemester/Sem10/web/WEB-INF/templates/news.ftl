@@ -50,390 +50,62 @@
 <table class="col-lg-12 col-xs-12 text-center parent" style="   margin-left:18%;  width: 65%">
 <#if list??>
     <#list list as news>
-        <#if ${news?counter%3==1}>
-    <tr>
-        <td>
+        <#if news?counter%3==1>
+
+    <tr><td>
             <div>
                 <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
+                   href="${news.getUrl()}">
                     <div>
                         <div>
                             <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
+                                 src="${news.getUrl_image()}"
+                                 alt="${news.getName()}"></div>
                     </div>
                     <ol class="breadcrumb g-size-red">
 
                         <h2 class="post-title grid-title" style="text-decoration: none;">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
+                        ${news.getName()}</h2>
 
                         <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
+                            <i class="fa fa-eye"><span>${news.getViews()}</span></i>
+                            <i class="fa fa-comment-o"><span>${news.getComments()]}</span></i>
                             <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
+                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">${news.getDate()}</span></i>
                         </div>
                     </ol>
                 </a>
             </div>
         </td>
-
-    </#if>
-    <#if ${news?counter%3==0}>
-        <td>
+        </#if>>
+    <#if news?counter%3==0><td>
             <div>
                 <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
+                   href="${news.getUrl()}">
                     <div>
                         <div>
                             <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
+                                 src="${news.getUrl_image()}"
+                                 alt="${news.getName()}"></div>
                     </div>
                     <ol class="breadcrumb g-size-red">
 
                         <h2 class="post-title grid-title" style="text-decoration: none;">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
+                        ${news['name']}</h2>
 
                         <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
+                            <i class="fa fa-eye"><span>${news.getViews()}</span></i>
+                            <i class="fa fa-comment-o"><span>${news.getComments()}</span></i>
                             <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
+                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">${news.getDate(  )}</span></i>
                         </div>
                     </ol>
                 </a>
             </div>
-        </td>
-    </tr>
-    </#if>
-</#if>
-</#list>
-
-
-    <tr>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div>
-                        <div>
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title" style="text-decoration: none;">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div class="imgholder">
-                        <div class="black">
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title" style="text-decoration: none;">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div>
-                        <div>
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div>
-                        <div>
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title" style="text-decoration: none;">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div class="imgholder">
-                        <div class="black">
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title" style="text-decoration: none;">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div>
-                        <div>
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div>
-                        <div>
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title" style="text-decoration: none;">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div class="imgholder">
-                        <div class="black">
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title" style="text-decoration: none;">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div>
-                        <div>
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div>
-                        <div>
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title" style="text-decoration: none;">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div class="imgholder">
-                        <div class="black">
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title" style="text-decoration: none;">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-        <td>
-            <div>
-                <a style="text-decoration: none;"
-                   href="/news/novomu-bmw-x4-m40i-otrjadili-novuju-rjadnuju-shestjorku-2015-10-01">
-                    <div>
-                        <div>
-                            <img width="292" height="207" class="img-rounded"
-                                 src="45d7229be3468b59e2e22b019739ea93-292x207-90.jpg"
-                                 alt="Новому BMW X4 M40i отрядили новую рядную &quot;шестёрку&quot;"></div>
-                    </div>
-                    <ol class="breadcrumb g-size-red">
-
-                        <h2 class="post-title grid-title">
-                            Новому BMW X4 M40i отрядили новую рядную "шестёрку" </h2>
-
-                        <div class="comments grid-i">
-                            <i class="fa fa-eye"><span>666</span></i>
-                            <i class="fa fa-comment-o"><span>0</span></i>
-
-                            <i style="float:right; margin-top: 4px;" class="fa fa-calendar"><span
-                                    style="font-size: 9px; font-family: Arial, Helvetica, sans-serif;">01.01.1900</span></i>
-                        </div>
-                    </ol>
-                </a>
-            </div>
-        </td>
-    </tr>
-
-
+        </td></tr></#if>
 </#list>
 </#if>
+
 </table>
 <ul class="pagination parent">
 <#list 1..${pages} as i>
