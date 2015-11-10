@@ -1,10 +1,10 @@
-package servlets;
+package ru.kpfu.itis.peter_kozlovsky.servlets;
 
 
-import db.DBHelper;
-import db.model.User;
+import ru.kpfu.itis.peter_kozlovsky.db.DBHelper;
+import ru.kpfu.itis.peter_kozlovsky.db.model.User;
 import freemarker.template.TemplateException;
-import singleton.ConfigSingleton;
+import ru.kpfu.itis.peter_kozlovsky.singleton.ConfigSingleton;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

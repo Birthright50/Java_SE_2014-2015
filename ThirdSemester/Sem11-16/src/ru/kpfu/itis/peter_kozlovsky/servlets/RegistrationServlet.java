@@ -1,7 +1,7 @@
-package servlets;
+package ru.kpfu.itis.peter_kozlovsky.servlets;
 
-import db.DBHelper;
-import db.model.User;
+import ru.kpfu.itis.peter_kozlovsky.db.DBHelper;
+import ru.kpfu.itis.peter_kozlovsky.db.model.User;
 import org.json.simple.JSONObject;
 
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 /**
  * Created by Birthright on 18.10.2015.
  */
-@WebServlet(name = "servlets.RegistrationServlet")
+@WebServlet(name = "ru.kpfu.itis.peter_kozlovsky.servlets.RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=UTF-8");

@@ -1,11 +1,11 @@
-package db;
+package ru.kpfu.itis.peter_kozlovsky.db;
 
-import db.model.User;
-import db.repository.TemplateRepositoryImlp;
-import db.repository.UserRepositoryImpl;
-import hash.SHA256;
-import hash.SlowHasher;
-import singleton.ConnectionSingleton;
+import ru.kpfu.itis.peter_kozlovsky.db.model.User;
+import ru.kpfu.itis.peter_kozlovsky.db.repository.TemplateRepositoryImlp;
+import ru.kpfu.itis.peter_kozlovsky.db.repository.UserRepositoryImpl;
+import ru.kpfu.itis.peter_kozlovsky.hash.SHA256;
+import ru.kpfu.itis.peter_kozlovsky.hash.SlowHasher;
+import ru.kpfu.itis.peter_kozlovsky.singleton.ConnectionSingleton;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;

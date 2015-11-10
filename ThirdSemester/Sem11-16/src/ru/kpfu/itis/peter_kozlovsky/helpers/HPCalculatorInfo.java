@@ -1,4 +1,4 @@
-package helpers;
+package ru.kpfu.itis.peter_kozlovsky.helpers;
 
 import java.util.HashMap;
 

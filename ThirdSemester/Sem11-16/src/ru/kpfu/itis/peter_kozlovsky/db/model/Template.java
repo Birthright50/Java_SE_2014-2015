@@ -1,4 +1,4 @@
-package db.model;
+package ru.kpfu.itis.peter_kozlovsky.db.model;
 
 import java.sql.Date;
 

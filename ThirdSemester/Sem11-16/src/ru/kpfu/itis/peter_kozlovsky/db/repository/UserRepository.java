@@ -1,6 +1,6 @@
-package db.repository;
+package ru.kpfu.itis.peter_kozlovsky.db.repository;
 
-import db.model.User;
+import ru.kpfu.itis.peter_kozlovsky.db.model.User;
 
 import java.util.List;
 

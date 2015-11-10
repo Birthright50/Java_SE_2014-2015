@@ -1,7 +1,7 @@
-package db.repository;
+package ru.kpfu.itis.peter_kozlovsky.db.repository;
 
-import db.model.Template;
-import singleton.ConnectionSingleton;
+import ru.kpfu.itis.peter_kozlovsky.db.model.Template;
+import ru.kpfu.itis.peter_kozlovsky.singleton.ConnectionSingleton;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -109,14 +109,14 @@ public class TemplateRepositoryImlp implements TemplateRepository {
 
     @Override
     public List<Template> showAll() {
-        ArrayList<db.model.Template> aNews = new ArrayList<>();
+        ArrayList<ru.kpfu.itis.peter_kozlovsky.db.model.Template> aNews = new ArrayList<>();
         Connection connection = ConnectionSingleton.getStatement();
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement("SELECT * FROM templates ORDER BY date_temp DESC");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                db.model.Template one_template = new db.model.Template();
+                ru.kpfu.itis.peter_kozlovsky.db.model.Template one_template = new ru.kpfu.itis.peter_kozlovsky.db.model.Template();
                 one_template.setId(resultSet.getInt("id"));
                 one_template.setName(resultSet.getString("name"));
                 one_template.setId_user(resultSet.getInt("id_user"));
@@ -143,14 +143,14 @@ one_template.setType(resultSet.getByte("type"));
 
     @Override
     public Template getTemplate(Integer id) {
-        db.model.Template template = null;
+        ru.kpfu.itis.peter_kozlovsky.db.model.Template template = null;
         Connection connection = ConnectionSingleton.getStatement();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM templates WHERE id = ?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                template = new db.model.Template();
+                template = new ru.kpfu.itis.peter_kozlovsky.db.model.Template();
                 template.setId(id);
                 template.setPage(resultSet.getString("page"));
                 template.setUrl_image(resultSet.getString("url_image"));
@@ -176,7 +176,7 @@ one_template.setType(resultSet.getByte("type"));
 
     @Override
     public List<Template> showAllForPage(int page, byte type) {
-        ArrayList<db.model.Template> aNews = new ArrayList<>();
+        ArrayList<ru.kpfu.itis.peter_kozlovsky.db.model.Template> aNews = new ArrayList<>();
         Connection connection = ConnectionSingleton.getStatement();
         PreparedStatement preparedStatement;
         try {

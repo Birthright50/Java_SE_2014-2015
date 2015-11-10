@@ -1,4 +1,4 @@
-package helpers;
+package ru.kpfu.itis.peter_kozlovsky.helpers;
 
 /**
  * Created by Birthright on 13.10.2015.

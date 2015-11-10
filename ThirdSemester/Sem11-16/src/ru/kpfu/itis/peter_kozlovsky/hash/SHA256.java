@@ -1,4 +1,4 @@
-package hash;
+package ru.kpfu.itis.peter_kozlovsky.hash;
 
 import org.bouncycastle.crypto.digests.SHA256Digest;
 

@@ -1,9 +1,9 @@
-package servlets;
+package ru.kpfu.itis.peter_kozlovsky.servlets;
 
 import freemarker.template.TemplateException;
-import helpers.HPCalculatorInfo;
+import ru.kpfu.itis.peter_kozlovsky.helpers.HPCalculatorInfo;
 import org.json.simple.JSONObject;
-import singleton.ConfigSingleton;
+import ru.kpfu.itis.peter_kozlovsky.singleton.ConfigSingleton;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

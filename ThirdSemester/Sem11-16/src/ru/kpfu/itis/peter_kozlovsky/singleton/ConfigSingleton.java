@@ -1,4 +1,4 @@
-package singleton;
+package ru.kpfu.itis.peter_kozlovsky.singleton;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;

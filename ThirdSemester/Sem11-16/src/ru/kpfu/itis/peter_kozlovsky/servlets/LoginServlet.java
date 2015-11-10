@@ -1,6 +1,6 @@
-package servlets;
+package ru.kpfu.itis.peter_kozlovsky.servlets;
 
-import db.DBHelper;
+import ru.kpfu.itis.peter_kozlovsky.db.DBHelper;
 import org.json.simple.JSONObject;
 
 import javax.servlet.ServletException;
@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Created by Birthright on 18.10.2015.
  */
-@WebServlet(name = "servlets.LoginServlet")
+@WebServlet(name = "ru.kpfu.itis.peter_kozlovsky.servlets.LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=UTF-8");
