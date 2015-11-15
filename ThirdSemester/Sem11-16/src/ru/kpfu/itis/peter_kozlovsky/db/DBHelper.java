@@ -1,8 +1,7 @@
 package ru.kpfu.itis.peter_kozlovsky.db;
 
 import ru.kpfu.itis.peter_kozlovsky.db.model.User;
-import ru.kpfu.itis.peter_kozlovsky.db.repository.TemplateRepositoryImlp;
-import ru.kpfu.itis.peter_kozlovsky.db.repository.UserRepositoryImpl;
+import ru.kpfu.itis.peter_kozlovsky.db.repository.*;
 import ru.kpfu.itis.peter_kozlovsky.hash.SHA256;
 import ru.kpfu.itis.peter_kozlovsky.hash.SlowHasher;
 import ru.kpfu.itis.peter_kozlovsky.singleton.ConnectionSingleton;
@@ -19,6 +18,10 @@ import java.sql.SQLException;
 public class DBHelper {
     public static UserRepositoryImpl userRepository = new UserRepositoryImpl();
     public static TemplateRepositoryImlp newsRepository = new TemplateRepositoryImlp();
+    public static AutoBrandRepository autoBrandRepository = new AutoBrandRepository();
+    public static AutoModelRepository autoModelRepository = new AutoModelRepository();
+    public static AutoSubmodelRepository autoSubmodelRepository = new AutoSubmodelRepository();
+    public static AutoModifyRepository autoModifyRepository = new AutoModifyRepository();
 
     public static String checkUser(String login, String password) {
         User user = userRepository.getUser(login);
@@ -29,19 +32,17 @@ public class DBHelper {
 
         if (new String(new SlowHasher().calculateSlowHash(new SHA256(), password, salt),
                 StandardCharsets.UTF_8).equals(user.getPassword())) {
-
             return "OK";
         }
-        System.out.println("kok");
         return "bad_pwd";
-
     }
 
-    public static int getNewsCount() {
+    public static int getNewsCount(byte type) {
         Connection connection = ConnectionSingleton.getStatement();
         PreparedStatement preparedStatement;
         try {
-            preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM templates");
+            preparedStatement = connection.prepareStatement("SELECT COUNT(*) FROM templates WHERE type = ?");
+            preparedStatement.setByte(1, type);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return Integer.parseInt(resultSet.getString(1));
@@ -67,8 +68,7 @@ public class DBHelper {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             if (connection != null) {
                 try {
                     connection.close();

@@ -25,14 +25,13 @@
     </nav>
 </div>
 <br/>
-<table style="margin-left: 75%">
+<nav class="main-nav" style="margin-right: 20%">
+    <ul>
 
-    <tr>
-        <td><button  type="button" class="btn btn-default navbar-btn">Выйти</button>
-        </td>
-
-    </tr>
-</table>
+        <li><a class="cd-login" href="/profile">Профиль</a></li>
+        <li><a class="cd-logout" href="/logout">Выход</a></li>
+    </ul>
+</nav>
 <section class="row">
     <div class="col-lg-12 col-xs-12">
         <h3 class="text-center b__u-settings">Параметры аккаунта</h3>

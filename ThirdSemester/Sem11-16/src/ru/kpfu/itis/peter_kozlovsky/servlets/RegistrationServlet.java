@@ -54,6 +54,8 @@ public class RegistrationServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String input = request.getParameter("input");
         JSONObject jsonObject = new JSONObject();
+        System.out.println(input);
+        System.out.println(DBHelper.checkRegistration(input));
         jsonObject.put("results", DBHelper.checkRegistration(input));
         response.getWriter().print(jsonObject.toString());
         if (input == null) {

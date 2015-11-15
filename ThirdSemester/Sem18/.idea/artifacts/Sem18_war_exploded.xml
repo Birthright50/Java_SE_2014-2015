@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Sem18:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Sem18_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Sem18/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Sem18" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="freemarker" />
+          <element id="library" level="project" name="bcprov-ext-jdk15on-153" />
+          <element id="library" level="project" name="json-simple-1.1.1" />
+          <element id="library" level="project" name="postgresql-9.4-1204.jdbc4" />
+          <element id="library" level="project" name="UploadFilesLib" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

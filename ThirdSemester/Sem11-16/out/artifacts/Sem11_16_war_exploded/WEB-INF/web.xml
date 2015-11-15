@@ -7,7 +7,7 @@
 
     <servlet>
         <servlet-name>login</servlet-name>
-        <servlet-class>servlets.LoginServlet</servlet-class>
+        <servlet-class>ru.kpfu.itis.peter_kozlovsky.servlets.LoginServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -16,7 +16,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>registration</servlet-name>
-        <servlet-class>servlets.RegistrationServlet</servlet-class>
+        <servlet-class>ru.kpfu.itis.peter_kozlovsky.servlets.RegistrationServlet</servlet-class>
 
     </servlet>
     <servlet-mapping>
@@ -25,7 +25,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>profile</servlet-name>
-        <servlet-class>servlets.ProfileServlet</servlet-class>
+        <servlet-class>ru.kpfu.itis.peter_kozlovsky.servlets.ProfileServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>profile</servlet-name>
@@ -34,7 +34,7 @@
 
     <servlet>
         <servlet-name>template</servlet-name>
-        <servlet-class>servlets.TemplateServlet</servlet-class>
+        <servlet-class>ru.kpfu.itis.peter_kozlovsky.servlets.TemplateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>template</servlet-name>
@@ -42,7 +42,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>logout</servlet-name>
-        <servlet-class>servlets.LogoutServlet</servlet-class>
+        <servlet-class>ru.kpfu.itis.peter_kozlovsky.servlets.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
@@ -59,7 +59,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>hpServlet</servlet-name>
-        <servlet-class>servlets.HPCalculatorServlet</servlet-class>
+        <servlet-class>ru.kpfu.itis.peter_kozlovsky.servlets.HPCalculatorServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>hpServlet</servlet-name>
@@ -67,7 +67,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>customsServlet</servlet-name>
-        <servlet-class>servlets.CustomsCalculatorServlet</servlet-class>
+        <servlet-class>ru.kpfu.itis.peter_kozlovsky.servlets.CustomsCalculatorServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>customsServlet</servlet-name>
@@ -75,10 +75,18 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>addtemplate</servlet-name>
-        <servlet-class>servlets.AddTemplateServlet</servlet-class>
+        <servlet-class>ru.kpfu.itis.peter_kozlovsky.servlets.AddTemplateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addtemplate</servlet-name>
         <url-pattern>/add_template</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>catalog</servlet-name>
+        <servlet-class>ru.kpfu.itis.peter_kozlovsky.servlets.CatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>catalog</servlet-name>
+        <url-pattern>/catalog/*</url-pattern>
     </servlet-mapping>
 </web-app>

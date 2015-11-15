@@ -69,7 +69,7 @@ public class AddTemplateServlet extends HttpServlet {
                 }
             }
         } catch (Exception ignored) {
-            response.sendRedirect("/profile");
+            response.sendRedirect("/news");
         }
     }
 

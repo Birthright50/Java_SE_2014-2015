@@ -81,4 +81,12 @@
         <servlet-name>addtemplate</servlet-name>
         <url-pattern>/add_template</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>catalog</servlet-name>
+        <servlet-class>ru.kpfu.itis.peter_kozlovsky.servlets.CatalogServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>catalog</servlet-name>
+        <url-pattern>/catalog/*</url-pattern>
+    </servlet-mapping>
 </web-app>

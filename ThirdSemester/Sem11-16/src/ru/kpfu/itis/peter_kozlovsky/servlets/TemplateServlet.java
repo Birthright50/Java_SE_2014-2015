@@ -56,12 +56,12 @@ public class TemplateServlet extends HttpServlet {
                 id = request.getParameter("id_news");
                 break;
             case ARTICLES:
-type = 2;
+                type = 2;
                 root.put("type", 2);
                 id = request.getParameter("id_articles");
                 break;
             case VIDEOS:
-                 type = 3;
+                type = 3;
                 root.put("type", 3);
                 id = request.getParameter("id_videos");
         }
@@ -82,11 +82,10 @@ type = 2;
             response.setContentType("text/html; charset=UTF-8");
             request.setCharacterEncoding("utf-8");
             List<Template> aNews = DBHelper.newsRepository.showAllForPage(page, type);
-            int length = DBHelper.getNewsCount();
+            int length = DBHelper.getNewsCount(type);
             int pages = length / 12 + 1;
             root.put("pages", pages);
             root.put("list", aNews);
-
         }
         try {
             ConfigSingleton.getConfiguration(getServletContext()).getTemplate("template.ftl").process(root, response.getWriter());

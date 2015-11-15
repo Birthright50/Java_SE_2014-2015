@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Калькулятор транспортного налога</title>
     <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/login_style.css">
@@ -13,12 +14,13 @@
     <script src="/js/main.js"></script>
     <script src="/js/hp_script.js"></script>
     <script src="/js/jquery.form.js"></script>
+    <script src="/js/login_registration.js"></script>
 </head>
 <body>
 
 <div id="header"></div>
 <div class="border-menu">
-    <nav class="menu"
+    <nav  class="menu"
     >
         <ul style="padding-left: 15px; margin-left: 10%;">
             <li class=""><a href="/news">Новости</a></li>
@@ -59,7 +61,7 @@
         </ul>
     </nav>
 </div>
-<div  style="width: 50%; margin-left: 25%" id="page-wrapper">
+<div style="width: 50%; margin-left: 25%" id="page-wrapper">
 
     <form method="post" class="form parent" role="form" id="nalog_form">
         <div class="panel panel-primary">
@@ -250,40 +252,7 @@
                     <input class="full-width" onclick="return login()" type="submit" value="Login">
                 </p>
             </form>
-            <script type="text/javascript">
-                login = function (request, response) {
-                    var input = $('#signin-email');
-                    var password = $('#signin-password');
-                    if (input.val().length > 0 && password.val().length > 0) {
-                        $.ajax(
-                                {
-                                    url: "/login",
-                                    data: {"input": input.val(), "password": password.val()},
-                                    dataType: "json",
-                                    success: function (resp) {
-                                        switch (resp.results) {
-                                            case "bad_pwd":
-                                                alert("Incorrect password");
-                                                return false;
-                                                break;
-                                            case "bad_login":
-                                                alert("Incorrect login");
-                                                return false;
-                                                break;
-                                            case "OK":
-                                                return true;
-                                        }
 
-                                    }
-                                }
-                        )
-                    }
-                    else {
-                        return false;
-                    }
-
-                }
-            </script>
 
 
         </div> <!-- cd-login -->
@@ -366,39 +335,7 @@
                 </p>
             </form>
 
-            <script type="text/javascript">
-                registration = function (request, response) {
-                    var input = $('#input');
-                    var password = $('#password');
-                    var email = $('#email');
-                    var region = $('#region');
-                    var car_mark = $('#car_mark');
-                    var first_name = $('#name[first]');
-                    var last_name = $('#name[last]');
-                    var date = $('#date');
-                    var number = $('#number');
-                    var gender = $('gender');
-                    if (input.val().length > 0 && password.val().length > 0 && email.val().length > 0 &&
-                            region.val().length > 0 && car_mark.val().length > 0 && first_name.val().length > 0 &&
-                            last_name.val().length > 0 && number.val().length > 0) {
-                        $.ajax({
-                                    url: "/registration",
-                                    data: {"input": input.val()},
-                                    dataType: "json",
-                                    success: function (resp) {
-                                        if (resp.results) {
-                                            alert("Пользователь с таким логином уже зарегистрирован");
-                                            return false;
-                                        }
-                                        return true;
-                                    }
-                                }
-                        )
-                    }
-                    return false;
 
-                }
-            </script>
             <!-- <a href="#0" class="cd-close-form">Close</a> -->
         </div> <!-- cd-signup -->
 

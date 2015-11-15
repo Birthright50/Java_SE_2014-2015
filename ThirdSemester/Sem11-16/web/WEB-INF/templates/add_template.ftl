@@ -64,7 +64,7 @@
 
 </form>
 <script type="text/javascript">
-    submit = function () {
+    function submit () {
         var radio = $('#radio');
         alert("fdsfsdf");
         var name = $('#name');
