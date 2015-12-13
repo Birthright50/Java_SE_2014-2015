@@ -1,3 +1,7 @@
+/**
+ * Created by Birthright on 13.12.2015.
+ */
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,6 +17,11 @@ public class Task09b {
     static final String GETDATE = "/getdate";
     static final String MATH = "/(add|mult)/([1-9][0-9]*)/([1-9][0-9]*)";
     static final String SEARCH = ("/(baidu\\.com|bing\\.com|yahoo\\.com|aol\\.com)/search");
+
+    public static String createSearch(String type, String placeholder, String parameter) {
+        return (type + "\" method=\"get\">\n" +
+                "<input type=\"text\" placeholder=\"" + placeholder + "\" name=\"" + parameter + "\" />");
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -39,13 +48,13 @@ public class Task09b {
                     matcher = patternMath.matcher(line);
                     if (matcher.matches()) {
                         stringBuilder.append("<b>");
-                        String number1 = matcher.group(2);
-                        String number2 = matcher.group(3);
+                        int number1 = Integer.parseInt(matcher.group(2));
+                        int number2 = Integer.parseInt(matcher.group(3));
                         if (matcher.group(1).length() == 3) {
-                            stringBuilder.append(number1).append(" + ").append(number2).append(" = ").append(Integer.parseInt(number1) + Integer.parseInt(number2));
+                            stringBuilder.append(number1).append(" + ").append(number2).append(" = ").append(number1 + number2);
                             System.out.println("add page created");
                         } else {
-                            stringBuilder.append(number1).append(" * ").append(number2).append(" = ").append(Integer.parseInt(number1) * Integer.parseInt(number2));
+                            stringBuilder.append(number1).append(" * ").append(number2).append(" = ").append(number1 * number2);
                             System.out.println("mult page created");
                         }
                         stringBuilder.append("</b>");
@@ -56,27 +65,23 @@ public class Task09b {
                             stringBuilder.append("<form action=\"");
                             String string = matcher.group(1);
                             if (string.length() == 8) {
-                                stringBuilder.append("http://www.bing.com/search\"").append("method=\"get\">\n" +
-                                        "<input type=\"text\" placeholder=\"bing.com\" name=\"q\" />");
+                                stringBuilder.append(createSearch("http://www.bing.com/search", "bing.com", "q"));
                                 System.out.println("Create bing search");
                             } else {
                                 if (string.length() == 7) {
-                                    stringBuilder.append("http://search.aol.com/aol/search?\"").append("method=\"get\">\n" +
-                                            "    <input type=\"text\" placeholder=\"aol.com\" name=\"q\" />");
+                                    stringBuilder.append(createSearch("http://search.aol.com/aol/search?", "aol.com", "q"));
                                     System.out.println("Create aol search");
                                 } else {
                                     if (string.equals("yahoo.com")) {
-                                        stringBuilder.append("https://search.yahoo.com/search\"").append("method=\"get\">\n" +
-                                                "    <input type=\"text\" placeholder=\"yahoo.com\" name=\"p\"/>");
+                                        stringBuilder.append(createSearch("https://search.yahoo.com/search", "yahoo.com", "p"));
                                         System.out.println("Create yahoo search");
                                     } else {
-                                        stringBuilder.append("http://www.baidu.com/s\" ").append("method=\"get\">\n" +
-                                                "    <input type=\"text\" placeholder=\"baidu.com\" name=\"wd\" />");
+                                        stringBuilder.append(createSearch("http://www.baidu.com/s", "baidu.com", "wd"));
                                         System.out.println("Create baidu search");
                                     }
                                 }
                             }
-                            stringBuilder.append("<input type=\"submit\" value=\"Search\"/>"+"</form>");
+                            stringBuilder.append("<input type=\"submit\" value=\"Search\"/>" + "</form>");
 
                         } else {
                             page404 = true;
@@ -96,3 +101,4 @@ public class Task09b {
         }
     }
 }
+
