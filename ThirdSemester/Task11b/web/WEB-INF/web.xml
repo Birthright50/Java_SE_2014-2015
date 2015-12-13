@@ -28,4 +28,8 @@
         <url-pattern>/add/*</url-pattern>
         <url-pattern>/mult/*</url-pattern>
     </servlet-mapping>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404error.html</location>
+    </error-page>
 </web-app>

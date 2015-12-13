@@ -13,7 +13,9 @@ import java.io.PrintWriter;
 public class SearchServlet extends HttpServlet {
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private static String createSearch(String type, String placeholder, String parameter) {
+        return (type + "\" method=\"get\">\n" +
+                "<input type=\"text\" placeholder=\"" + placeholder + "\" name=\"" + parameter + "\" />");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,24 +30,19 @@ public class SearchServlet extends HttpServlet {
                 "<body>\n");
         stringBuilder.append("<form action=\"");
         if (path.length() == 5) {
-            stringBuilder.append("http://www.bing.com/search\"").append("method=\"get\">\n" +
-                    "<input type=\"text\" placeholder=\"bing.com\" name=\"q\" />");
+            stringBuilder.append(createSearch("http://www.bing.com/search", "bing.com", "q"));
 
         } else {
             if (path.length() == 4) {
-                stringBuilder.append("http://search.aol.com/aol/search?\"").append("method=\"get\">\n" +
-                        "    <input type=\"text\" placeholder=\"aol.com\" name=\"q\" />");
+                stringBuilder.append(createSearch("http://search.aol.com/aol/search?", "aol.com", "q"));
 
             } else {
                 if (path.equals("/yahoo")) {
-                    stringBuilder.append("https://search.yahoo.com/search\"").append("method=\"get\">\n" +
-                            "    <input type=\"text\" placeholder=\"yahoo.com\" name=\"p\"/>");
+                    stringBuilder.append(createSearch("https://search.yahoo.com/search", "yahoo.com", "p"));
 
                 } else {
                     if (path.equals("/baidu")) {
-                        stringBuilder.append("http://www.baidu.com/s\" ").append("method=\"get\">\n" +
-                                "    <input type=\"text\" placeholder=\"baidu.com\" name=\"wd\" />");
-
+                        stringBuilder.append(createSearch("http://www.baidu.com/s", "baidu.com", "wd"));
                     } else {
                         writer.write("<b>Incorrect PATH</b>");
                         writer.close();
