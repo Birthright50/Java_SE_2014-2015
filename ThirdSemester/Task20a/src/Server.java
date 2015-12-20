@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class Server {
     public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
-   final static ArrayList<Message> messages = new ArrayList<>();
+    volatile static ArrayList<Message> messages = new ArrayList<>();
 
     ArrayList<Connection> connections;
     final int PORT = 3456;

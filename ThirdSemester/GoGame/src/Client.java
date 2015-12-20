@@ -29,9 +29,17 @@ public class Client {
     }
 
 
-    private void startGame() {
-
+    private void startGame(StoneColor stoneColor) {
+        if (stoneColor == null) {
+            try {
+                stoneColor = (StoneColor) ois.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+            new GameBoard(stoneColor, ous, ois);
     }
+
 
     public void enterName() {
         ArrayList names = null;
@@ -42,7 +50,7 @@ public class Client {
         }
         JFrame jFrame = new JFrame("Enter your name") {
             {
-                setUndecorated(true);
+                setResizable(false);
                 setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
                 setBackground(new java.awt.Color(204, 204, 204));
@@ -116,7 +124,7 @@ public class Client {
                     setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                     setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
                     setForeground(java.awt.Color.black);
-                    setUndecorated(true);
+                    setResizable(false);
                 }
             };
             Box.Filler filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(250, 0), new java.awt.Dimension(250, 0), new java.awt.Dimension(250, 32767));
@@ -141,6 +149,7 @@ public class Client {
                     });
                 }
             };
+
             JLabel choose_the_room = new JLabel("Choose the room") {
                 {
                     setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -152,7 +161,7 @@ public class Client {
                     addActionListener(e -> {
                         String name = String.valueOf(comboBox.getSelectedItem());
 
-                        if (name != null) {
+                        if (!name.equals("null")) {
                             try {
                                 ous.writeUTF(name);
                                 ous.flush();
@@ -160,6 +169,7 @@ public class Client {
                                 e1.printStackTrace();
                             }
                             jFrame.dispatchEvent(new WindowEvent(jFrame, WindowEvent.WINDOW_CLOSING));
+                            startGame(null);
                         }
                     });
                 }
@@ -216,26 +226,68 @@ public class Client {
     }
 
     private void waitingRoom() {
-        try {
-            synchronized (this){
-                this.wait();
-            }
+        javax.swing.Box.Filler filler1;
+        javax.swing.JLabel jLabel1;
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        try {
-            Object object = ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        JFrame jFrame = new JFrame() {
+            {
+                setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+                setBackground(new java.awt.Color(204, 204, 204));
+                setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+                setForeground(java.awt.Color.black);
+                setResizable(false);
+            }
+        };
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(250, 0), new java.awt.Dimension(250, 0), new java.awt.Dimension(250, 32767));
+        jLabel1 = new javax.swing.JLabel() {
+            {
+                setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                setText("Waiting your opponent...");
+            }
+        };
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(jFrame.getContentPane());
+        jFrame.getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(83, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(64, 64, 64))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(103, 103, 103))))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel1)
+                                .addGap(0, 87, Short.MAX_VALUE))
+        );
+        jFrame.pack();
+        jFrame.setLocationRelativeTo(null);
+        jFrame.setVisible(true);
+        new Thread(() -> {
+            try {
+                StoneColor stoneColor = (StoneColor) ois.readObject();
+                jFrame.dispatchEvent(new WindowEvent(jFrame, WindowEvent.WINDOW_CLOSING));
+                startGame(stoneColor);
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+
     }
 
 
     public static void main(String[] args) {
         Client client = new Client();
         client.enterName();
-
     }
 }
 

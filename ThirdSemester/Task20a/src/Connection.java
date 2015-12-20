@@ -1,4 +1,6 @@
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -19,14 +21,17 @@ public class Connection implements Runnable {
             ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
             while (true) {
                 Message message = (Message) in.readObject();
-                if (message == null) {
-                    System.out.println(Server.messages);
+                int count = message.getCount();
+                if (count > -1) {
                     ArrayList<Message> custom = new ArrayList<>();
-                    custom.addAll(Server.messages);
-                    out.writeObject(custom);
+                    System.out.println(Server.messages);
+                    for (int i = count; i < Server.messages.size(); i++) {
+                        custom.add(Server.messages.get(i));
+                    }
+                    Messages messages = new Messages(custom);
+                    out.writeObject(messages);
                     out.flush();
                 } else {
-                    System.out.println(message);
                     Server.messages.add(message);
                 }
             }

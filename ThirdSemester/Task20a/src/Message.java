@@ -8,6 +8,11 @@ public class Message implements Serializable {
     private String message;
     private String date;
     private String name;
+    private int count;
+
+    public int getCount() {
+        return count;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -33,11 +38,10 @@ public class Message implements Serializable {
         return date + " " + name + ": " + message;
     }
 
-    public Message(String name, String message) {
+    public Message(String name, String message, int count) {
         this.name = name;
         this.message = message;
+        this.count = count;
         date = Server.simpleDateFormat.format(new Date());
     }
-
-
 }
